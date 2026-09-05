@@ -1,0 +1,25 @@
+/* ============================================================
+   css/footer.css — Footer styles
+   ============================================================ */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-lg);
+  height: var(--footer-height);
+  border-top: 1px solid var(--border-color);
+  background: var(--surface-color);
+  font-size: 0.75rem;
+  color: var(--muted-text);
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 var(--spacing-md);
+    font-size: 0.65rem;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+}
