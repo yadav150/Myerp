@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolERP · Notices</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+    <!-- ===== SIDEBAR OVERLAY ===== -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-brand">
+            <svg class="sidebar-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+            </svg>
+            <span class="sidebar-brand-text">SchoolERP</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
+                        <span>Dashboard</span>
+                    </a></li>
+                <li class="sidebar-divider">Academic</li>
+                <li class="sidebar-item"><a href="students.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                        <span>Students</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="teachers.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                        <span>Teachers</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="attendance.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                        <span>Attendance</span>
+                    </a></li>
+                <li class="sidebar-divider">Finance</li>
+                <li class="sidebar-item"><a href="fees.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                        <span>Fees</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="salary.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                        <span>Salary</span>
+                    </a></li>
+                <li class="sidebar-divider">Documents</li>
+                <li class="sidebar-item"><a href="id-cards.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                        <span>ID Cards</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="certificates.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+                        <span>Certificates</span>
+                    </a></li>
+                <li class="sidebar-divider">Communication</li>
+                <li class="sidebar-item active"><a href="notices.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                        <span>Notices</span>
+                    </a></li>
+                <li class="sidebar-divider">Administration</li>
+                <li class="sidebar-item"><a href="reports.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                        <span>Reports</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="settings.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v3" /><path d="M12 20v3" /><path d="M4.22 4.22l2.12 2.12" /><path d="M17.66 17.66l2.12 2.12" /><path d="M1 12h3" /><path d="M20 12h3" /><path d="M4.22 19.78l2.12-2.12" /><path d="M17.66 6.34l2.12-2.12" /></svg>
+                        <span>Settings</span>
+                    </a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="sidebar-version">v2.0.0</span>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header" role="banner">
+            <div class="header-left">
+                <button class="header-hamburger" id="hamburgerBtn" aria-label="Toggle sidebar" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+                </button>
+                <div class="header-title">
+                    <h1>Notices</h1>
+                    <span class="header-breadcrumb">Communication / Notices</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="header-notification" aria-label="Notifications" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                    <span class="notification-badge">4</span>
+                </button>
+
+                <div class="header-profile">
+                    <img src="assets/images/avatar-admin.svg" alt="Admin profile" class="profile-avatar" />
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <button class="profile-toggle" id="profileToggle" aria-label="User menu" type="button">
+                            <span class="profile-name">Admin</span>
+                            <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="settings.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v3" /><path d="M12 20v3" /><path d="M4.22 4.22l2.12 2.12" /><path d="M17.66 17.66l2.12 2.12" /><path d="M1 12h3" /><path d="M20 12h3" /><path d="M4.22 19.78l2.12-2.12" /><path d="M17.66 6.34l2.12-2.12" /></svg>
+                                Settings
+                            </a>
+                            <hr class="dropdown-divider" />
+                            <button class="dropdown-item" id="logoutBtn" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== PAGE CONTENT ===== -->
+        <main class="page-content" role="main">
+
+            <!-- Page header -->
+            <div class="page-toolbar">
+                <div class="toolbar-left">
+                    <h2 class="page-title">Notice Management</h2>
+                    <span class="page-subtitle">Create and manage school announcements</span>
+                </div>
+                <div class="toolbar-right">
+                    <button class="btn btn-primary" id="addNoticeBtn" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        Add Notice
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <div class="filter-item">
+                        <label for="searchNotice" class="visually-hidden">Search</label>
+                        <input type="search" id="searchNotice" placeholder="Search by title..." class="filter-input" />
+                        <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                    </div>
+                    <div class="filter-item">
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="Exam">Exam</option>
+                            <option value="Event">Event</option>
+                            <option value="Holiday">Holiday</option>
+                            <option value="Parent">Parent</option>
+                            <option value="Academic">Academic</option>
+                            <option value="General">General</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="Published">Published</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="resetFilters" type="button">Reset</button>
+            </div>
+
+            <!-- Notices List -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="notice-list">
+                        <div class="notice-item">
+                            <div class="notice-header">
+                                <span class="notice-badge exam">Exam</span>
+                                <span class="notice-title">Mid-term Examination Schedule 2026</span>
+                                <span class="notice-status published">Published</span>
+                            </div>
+                            <div class="notice-meta">
+                                <span class="notice-date">2026-09-05</span>
+                                <span class="notice-audience">All Students &amp; Teachers</span>
+                            </div>
+                            <div class="notice-body">
+                                <p>The mid-term examinations for the academic year 2026-27 will commence from September 15, 2026. Detailed time table and syllabus have been uploaded to the student portal. All students are requested to prepare accordingly and attend the examinations without fail.</p>
+                            </div>
+                            <div class="notice-actions">
+                                <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                <button class="action-btn delete" aria-label="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg></button>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-header">
+                                <span class="notice-badge event">Event</span>
+                                <span class="notice-title">Annual Sports Day – Registration Open</span>
+                                <span class="notice-status published">Published</span>
+                            </div>
+                            <div class="notice-meta">
+                                <span class="notice-date">2026-09-03</span>
+                                <span class="notice-audience">All Students</span>
+                            </div>
+                            <div class="notice-body">
+                                <p>Our Annual Sports Day is scheduled for September 25, 2026. Students interested in participating in various sports events are requested to register with their respective class teachers by September 15, 2026. Practice sessions will begin from September 18.</p>
+                            </div>
+                            <div class="notice-actions">
+                                <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                <button class="action-btn delete" aria-label="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg></button>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-header">
+                                <span class="notice-badge holiday">Holiday</span>
+                                <span class="notice-title">Ganesh Chaturthi – School Holiday</span>
+                                <span class="notice-status published">Published</span>
+                            </div>
+                            <div class="notice-meta">
+                                <span class="notice-date">2026-09-02</span>
+                                <span class="notice-audience">All Students &amp; Staff</span>
+                            </div>
+                            <div class="notice-body">
+                                <p>The school will remain closed on September 10, 2026, on account of Ganesh Chaturthi. All classes and activities will resume on September 11, 2026. Students are advised to use the holiday for preparation and revision.</p>
+                            </div>
+                            <div class="notice-actions">
+                                <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                <button class="action-btn delete" aria-label="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg></button>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-header">
+                                <span class="notice-badge parent">Parent</span>
+                                <span class="notice-title">Parent-Teacher Meeting – September 2026</span>
+                                <span class="notice-status draft">Draft</span>
+                            </div>
+                            <div class="notice-meta">
+                                <span class="notice-date">2026-08-30</span>
+                                <span class="notice-audience">Parents of All Students</span>
+                            </div>
+                            <div class="notice-body">
+                                <p>The next Parent-Teacher Meeting will be held on September 20, 2026, from 9:00 AM to 12:00 PM. Parents are requested to meet the respective class teachers to discuss the academic progress of their children. Report cards will be distributed during the meeting.</p>
+                            </div>
+                            <div class="notice-actions">
+                                <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                <button class="action-btn delete" aria-label="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg></button>
+                            </div>
+                        </div>
+
+                        <div class="notice-item">
+                            <div class="notice-header">
+                                <span class="notice-badge academic">Academic</span>
+                                <span class="notice-title">New Academic Calendar 2026-27 Released</span>
+                                <span class="notice-status archived">Archived</span>
+                            </div>
+                            <div class="notice-meta">
+                                <span class="notice-date">2026-08-15</span>
+                                <span class="notice-audience">All Students &amp; Staff</span>
+                            </div>
+                            <div class="notice-body">
+                                <p>The academic calendar for the session 2026-27 has been released. It includes all important dates, holidays, examination schedules, and school events. Please refer to the school website or the student portal for detailed information.</p>
+                            </div>
+                            <div class="notice-actions">
+                                <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                <button class="action-btn delete" aria-label="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-bar">
+                        <span class="pagination-info">Showing 1–5 of 18 notices</span>
+                        <nav class="pagination" aria-label="Table navigation">
+                            <button class="page-btn" disabled aria-label="Previous page">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                            </button>
+                            <button class="page-btn active" aria-label="Page 1">1</button>
+                            <button class="page-btn" aria-label="Page 2">2</button>
+                            <button class="page-btn" aria-label="Page 3">3</button>
+                            <button class="page-btn" aria-label="Page 4">4</button>
+                            <button class="page-btn" aria-label="Next page">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Notice Form (static) -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Add New Notice</h3>
+                    <span class="card-subtitle">Create a new school announcement</span>
+                </div>
+                <div class="card-body">
+                    <form class="notice-form" id="noticeForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="noticeTitle">Notice Title</label>
+                                <input type="text" id="noticeTitle" placeholder="Enter notice title" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="noticeCategory">Category</label>
+                                <select id="noticeCategory" class="form-control">
+                                    <option value="">Select Category</option>
+                                    <option value="Exam">Exam</option>
+                                    <option value="Event">Event</option>
+                                    <option value="Holiday">Holiday</option>
+                                    <option value="Parent">Parent</option>
+                                    <option value="Academic">Academic</option>
+                                    <option value="General">General</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="noticeAudience">Audience</label>
+                                <select id="noticeAudience" class="form-control">
+                                    <option value="">Select Audience</option>
+                                    <option value="All Students">All Students</option>
+                                    <option value="All Teachers">All Teachers</option>
+                                    <option value="All Students &amp; Teachers">All Students &amp; Teachers</option>
+                                    <option value="All Staff">All Staff</option>
+                                    <option value="Parents">Parents</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="noticeDate">Date</label>
+                                <input type="date" id="noticeDate" class="form-control" value="2026-09-05" />
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="noticeContent">Notice Content</label>
+                                <textarea id="noticeContent" rows="4" placeholder="Enter notice details..." class="form-control"></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="noticeStatus">Status</label>
+                                <select id="noticeStatus" class="form-control">
+                                    <option value="Published">Published</option>
+                                    <option value="Draft">Draft</option>
+                                    <option value="Archived">Archived</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                            <button type="submit" class="btn btn-primary">Publish Notice</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer" role="contentinfo">
+            <span>&copy; 2026 SchoolERP. All rights reserved.</span>
+            <span>v2.0.0</span>
+        </footer>
+
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="js/navigation.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
