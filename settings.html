@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolERP · Settings</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+    <style>
+        /* Settings-specific overrides – these will be controlled by JS */
+        .settings-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+            margin-bottom: 24px;
+        }
+        .settings-tab {
+            padding: 10px 20px;
+            border: none;
+            background: transparent;
+            color: var(--muted-text);
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: var(--radius) var(--radius) 0 0;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .settings-tab:hover { background: var(--surface-color); color: var(--text-color); }
+        .settings-tab.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+        .settings-panel { display: none; animation: fadeIn 0.3s ease; }
+        .settings-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .setting-group {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .setting-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .setting-group h4 { margin-bottom: 12px; font-size: 1rem; color: var(--text-color); }
+
+        .setting-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .setting-row label {
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        .setting-row .form-control { width: 100%; max-width: 400px; }
+        .setting-row .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .setting-row .color-picker-wrapper input[type="color"] {
+            width: 40px;
+            height: 40px;
+            padding: 2px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            cursor: pointer;
+            background: transparent;
+        }
+        .setting-row .color-picker-wrapper input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        .setting-row .color-picker-wrapper input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: calc(var(--radius) - 2px);
+        }
+        .setting-row .color-hex { font-family: monospace; font-size: 0.85rem; color: var(--muted-text); }
+
+        .setting-row .range-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 400px;
+        }
+        .setting-row .range-wrapper input[type="range"] {
+            flex: 1;
+            accent-color: var(--primary-color);
+        }
+        .setting-row .range-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .preview-box {
+            padding: 16px 20px;
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius);
+            background: var(--surface-color);
+            margin-top: 8px;
+            max-width: 400px;
+        }
+        .preview-box .sample-text { font-size: 0.95rem; color: var(--text-color); }
+        .preview-box .sample-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: var(--radius);
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+        .preview-box .sample-card {
+            padding: 12px 16px;
+            background: #fff;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            margin-top: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        .save-feedback {
+            display: none;
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            margin-top: 16px;
+            font-weight: 500;
+            background: var(--success-color);
+            color: #fff;
+            align-items: center;
+            gap: 10px;
+        }
+        .save-feedback.show { display: flex; }
+        .save-feedback.error { background: var(--danger-color); }
+
+        @media (max-width: 768px) {
+            .setting-row {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .setting-row .form-control { max-width: 100%; }
+            .settings-tab { padding: 8px 14px; font-size: 0.8rem; }
+            .setting-row .range-wrapper { max-width: 100%; }
+            .preview-box { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SIDEBAR OVERLAY ===== -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-brand">
+            <svg class="sidebar-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+            </svg>
+            <span class="sidebar-brand-text">SchoolERP</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
+                        <span>Dashboard</span>
+                    </a></li>
+                <li class="sidebar-divider">Academic</li>
+                <li class="sidebar-item"><a href="students.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                        <span>Students</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="teachers.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                        <span>Teachers</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="attendance.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                        <span>Attendance</span>
+                    </a></li>
+                <li class="sidebar-divider">Finance</li>
+                <li class="sidebar-item"><a href="fees.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                        <span>Fees</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="salary.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                        <span>Salary</span>
+                    </a></li>
+                <li class="sidebar-divider">Documents</li>
+                <li class="sidebar-item"><a href="id-cards.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                        <span>ID Cards</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="certificates.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+                        <span>Certificates</span>
+                    </a></li>
+                <li class="sidebar-divider">Communication</li>
+                <li class="sidebar-item"><a href="notices.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                        <span>Notices</span>
+                    </a></li>
+                <li class="sidebar-divider">Administration</li>
+                <li class="sidebar-item"><a href="reports.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                        <span>Reports</span>
+                    </a></li>
+                <li class="sidebar-item active"><a href="settings.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v3" /><path d="M12 20v3" /><path d="M4.22 4.22l2.12 2.12" /><path d="M17.66 17.66l2.12 2.12" /><path d="M1 12h3" /><path d="M20 12h3" /><path d="M4.22 19.78l2.12-2.12" /><path d="M17.66 6.34l2.12-2.12" /></svg>
+                        <span>Settings</span>
+                    </a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="sidebar-version">v2.0.0</span>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header" role="banner">
+            <div class="header-left">
+                <button class="header-hamburger" id="hamburgerBtn" aria-label="Toggle sidebar" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+                </button>
+                <div class="header-title">
+                    <h1>Settings</h1>
+                    <span class="header-breadcrumb">Administration / Settings</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="header-notification" aria-label="Notifications" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                    <span class="notification-badge">4</span>
+                </button>
+
+                <div class="header-profile">
+                    <img src="assets/images/avatar-admin.svg" alt="Admin profile" class="profile-avatar" />
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <button class="profile-toggle" id="profileToggle" aria-label="User menu" type="button">
+                            <span class="profile-name">Admin</span>
+                            <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="settings.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v3" /><path d="M12 20v3" /><path d="M4.22 4.22l2.12 2.12" /><path d="M17.66 17.66l2.12 2.12" /><path d="M1 12h3" /><path d="M20 12h3" /><path d="M4.22 19.78l2.12-2.12" /><path d="M17.66 6.34l2.12-2.12" /></svg>
+                                Settings
+                            </a>
+                            <hr class="dropdown-divider" />
+                            <button class="dropdown-item" id="logoutBtn" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== PAGE CONTENT ===== -->
+        <main class="page-content" role="main">
+
+            <!-- Page header -->
+            <div class="page-toolbar">
+                <div class="toolbar-left">
+                    <h2 class="page-title">System Settings</h2>
+                    <span class="page-subtitle">Configure school information, appearance, and preferences</span>
+                </div>
+                <div class="toolbar-right">
+                    <button class="btn btn-secondary" id="resetSettingsBtn" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10" /><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" /></svg>
+                        Reset Defaults
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings Tabs -->
+            <div class="settings-tabs" role="tablist">
+                <button class="settings-tab active" data-tab="general" role="tab">General</button>
+                <button class="settings-tab" data-tab="appearance" role="tab">Appearance</button>
+                <button class="settings-tab" data-tab="academic" role="tab">Academic</button>
+                <button class="settings-tab" data-tab="profile" role="tab">Profile</button>
+                <button class="settings-tab" data-tab="system" role="tab">System</button>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PANEL: General -->
+            <!-- ============================================================ -->
+            <div class="settings-panel active" id="panel-general" role="tabpanel">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">School Information</h3></div>
+                    <div class="card-body">
+                        <div class="setting-group">
+                            <div class="setting-row">
+                                <label for="schoolName">School Name</label>
+                                <input type="text" id="schoolName" class="form-control" value="Green Valley School" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="schoolAddress">Address</label>
+                                <input type="text" id="schoolAddress" class="form-control" value="123, Green Valley Road, Pune – 411001, Maharashtra" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="schoolPhone">Phone</label>
+                                <input type="text" id="schoolPhone" class="form-control" value="+91 98765 43210" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="schoolEmail">Email</label>
+                                <input type="email" id="schoolEmail" class="form-control" value="info@greenvalley.edu" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="schoolLogo">Logo URL</label>
+                                <input type="text" id="schoolLogo" class="form-control" value="assets/icons/favicon.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Contact Information</h3></div>
+                    <div class="card-body">
+                        <div class="setting-group">
+                            <div class="setting-row">
+                                <label for="contactPerson">Contact Person</label>
+                                <input type="text" id="contactPerson" class="form-control" value="Mr. Rajesh Sharma" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="contactPhone">Contact Phone</label>
+                                <input type="text" id="contactPhone" class="form-control" value="+91 87654 32109" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="contactEmail">Contact Email</label>
+                                <input type="email" id="contactEmail" class="form-control" value="admin@greenvalley.edu" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PANEL: Appearance -->
+            <!-- ============================================================ -->
+            <div class="settings-panel" id="panel-appearance" role="tabpanel">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Theme &amp; Colors</h3></div>
+                    <div class="card-body">
+                        <div class="setting-group">
+                            <div class="setting-row">
+                                <label>Primary Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="primaryColor" value="#2563eb" />
+                                    <span class="color-hex" id="primaryColorHex">#2563eb</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <label>Secondary Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="secondaryColor" value="#64748b" />
+                                    <span class="color-hex" id="secondaryColorHex">#64748b</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <label>Success Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="successColor" value="#22c55e" />
+                                    <span class="color-hex" id="successColorHex">#22c55e</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <label>Danger Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="dangerColor" value="#ef4444" />
+                                    <span class="color-hex" id="dangerColorHex">#ef4444</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <label>Warning Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="warningColor" value="#f59e0b" />
+                                    <span class="color-hex" id="warningColorHex">#f59e0b</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <label>Background Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="bgColor" value="#f1f5f9" />
+                                    <span class="color-hex" id="bgColorHex">#f1f5f9</span>
+                                </div>
+                            </div>
+                            <div class="setting-row">
+                                <label>Surface Color</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="surfaceColor" value="#ffffff" />
+                                    <span class="color-hex" id="surfaceColorHex">#ffffff</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h4>Border Radius</h4>
+                            <div class="setting-row">
+                                <label>Border Radius (px)</label>
+                                <div class="range-wrapper">
+                                    <input type="range" id="borderRadius" min="0" max="20" value="6" />
+                                    <span class="range-value" id="borderRadiusVal">6px</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h4>Live Preview</h4>
+                            <div class="preview-box">
+                                <div class="sample-text">Sample text with current theme.</div>
+                                <span class="sample-badge">Badge</span>
+                                <div class="sample-card">Card with current border radius.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PANEL: Academic -->
+            <!-- ============================================================ -->
+            <div class="settings-panel" id="panel-academic" role="tabpanel">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Academic Settings</h3></div>
+                    <div class="card-body">
+                        <div class="setting-group">
+                            <div class="setting-row">
+                                <label for="academicYear">Academic Year</label>
+                                <input type="text" id="academicYear" class="form-control" value="2026-27" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="sessionStart">Session Start</label>
+                                <input type="date" id="sessionStart" class="form-control" value="2026-06-01" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="sessionEnd">Session End</label>
+                                <input type="date" id="sessionEnd" class="form-control" value="2027-05-31" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="term1Start">Term 1 Start</label>
+                                <input type="date" id="term1Start" class="form-control" value="2026-06-01" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="term1End">Term 1 End</label>
+                                <input type="date" id="term1End" class="form-control" value="2026-10-15" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="term2Start">Term 2 Start</label>
+                                <input type="date" id="term2Start" class="form-control" value="2026-11-01" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="term2End">Term 2 End</label>
+                                <input type="date" id="term2End" class="form-control" value="2027-03-31" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PANEL: Profile -->
+            <!-- ============================================================ -->
+            <div class="settings-panel" id="panel-profile" role="tabpanel">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Profile Settings</h3></div>
+                    <div class="card-body">
+                        <div class="setting-group">
+                            <div class="setting-row">
+                                <label for="userName">Full Name</label>
+                                <input type="text" id="userName" class="form-control" value="Admin User" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="userEmail">Email Address</label>
+                                <input type="email" id="userEmail" class="form-control" value="admin@school.edu" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="userPhone">Phone Number</label>
+                                <input type="text" id="userPhone" class="form-control" value="+91 98765 43210" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="userRole">Role</label>
+                                <input type="text" id="userRole" class="form-control" value="Super Administrator" disabled style="background:var(--surface-color);" />
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <h4>Change Password</h4>
+                            <div class="setting-row">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" class="form-control" placeholder="Enter current password" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" class="form-control" placeholder="Enter new password" />
+                            </div>
+                            <div class="setting-row">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm new password" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PANEL: System -->
+            <!-- ============================================================ -->
+            <div class="settings-panel" id="panel-system" role="tabpanel">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">System Preferences</h3></div>
+                    <div class="card-body">
+                        <div class="setting-group">
+                            <div class="setting-row">
+                                <label for="defaultLanguage">Default Language</label>
+                                <select id="defaultLanguage" class="form-control">
+                                    <option value="en">English</option>
+                                    <option value="hi">Hindi</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                </select>
+                            </div>
+                            <div class="setting-row">
+                                <label for="timezone">Timezone</label>
+                                <select id="timezone" class="form-control">
+                                    <option value="Asia/Kolkata">Asia/Kolkata (UTC+5:30)</option>
+                                    <option value="America/New_York">America/New_York (UTC-4)</option>
+                                    <option value="Europe/London">Europe/London (UTC+1)</option>
+                                    <option value="Asia/Dubai">Asia/Dubai (UTC+4)</option>
+                                </select>
+                            </div>
+                            <div class="setting-row">
+                                <label for="dateFormat">Date Format</label>
+                                <select id="dateFormat" class="form-control">
+                                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                </select>
+                            </div>
+                            <div class="setting-row">
+                                <label for="currency">Currency</label>
+                                <select id="currency" class="form-control">
+                                    <option value="INR">INR (₹)</option>
+                                    <option value="USD">USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <h4>Sidebar Behavior</h4>
+                            <div class="setting-row">
+                                <label for="sidebarCollapse">Sidebar Default</label>
+                                <select id="sidebarCollapse" class="form-control">
+                                    <option value="expanded">Expanded</option>
+                                    <option value="collapsed">Collapsed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <h4>Notifications</h4>
+                            <div class="setting-row">
+                                <label for="notifEmail">Email Notifications</label>
+                                <select id="notifEmail" class="form-control">
+                                    <option value="1">Enabled</option>
+                                    <option value="0">Disabled</option>
+                                </select>
+                            </div>
+                            <div class="setting-row">
+                                <label for="notifBrowser">Browser Notifications</label>
+                                <select id="notifBrowser" class="form-control">
+                                    <option value="1">Enabled</option>
+                                    <option value="0">Disabled</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SAVE BUTTON & FEEDBACK ===== -->
+            <div class="card">
+                <div class="card-body" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+                    <button class="btn btn-primary" id="saveSettingsBtn" style="min-width:160px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        Save All Changes
+                    </button>
+                    <span style="font-size:0.85rem; color:var(--muted-text);">Changes are saved locally and persist across sessions.</span>
+                </div>
+                <div class="save-feedback" id="saveFeedback">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span id="feedbackMsg">Settings saved successfully!</span>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer" role="contentinfo">
+            <span>&copy; 2026 SchoolERP. All rights reserved.</span>
+            <span>v2.0.0</span>
+        </footer>
+
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ============================================================
+        // SETTINGS ENGINE — Real-time CSS variable updates + localStorage
+        // ============================================================
+
+        (function() {
+            'use strict';
+
+            // ---- DOM refs ----
+            const root = document.documentElement;
+
+            // Appearance controls
+            const primaryColor = document.getElementById('primaryColor');
+            const secondaryColor = document.getElementById('secondaryColor');
+            const successColor = document.getElementById('successColor');
+            const dangerColor = document.getElementById('dangerColor');
+            const warningColor = document.getElementById('warningColor');
+            const bgColor = document.getElementById('bgColor');
+            const surfaceColor = document.getElementById('surfaceColor');
+            const borderRadius = document.getElementById('borderRadius');
+            const borderRadiusVal = document.getElementById('borderRadiusVal');
+
+            // Hex displays
+            const primaryColorHex = document.getElementById('primaryColorHex');
+            const secondaryColorHex = document.getElementById('secondaryColorHex');
+            const successColorHex = document.getElementById('successColorHex');
+            const dangerColorHex = document.getElementById('dangerColorHex');
+            const warningColorHex = document.getElementById('warningColorHex');
+            const bgColorHex = document.getElementById('bgColorHex');
+            const surfaceColorHex = document.getElementById('surfaceColorHex');
+
+            // General
+            const schoolName = document.getElementById('schoolName');
+            const schoolAddress = document.getElementById('schoolAddress');
+            const schoolPhone = document.getElementById('schoolPhone');
+            const schoolEmail = document.getElementById('schoolEmail');
+            const schoolLogo = document.getElementById('schoolLogo');
+
+            // Academic
+            const academicYear = document.getElementById('academicYear');
+            const sessionStart = document.getElementById('sessionStart');
+            const sessionEnd = document.getElementById('sessionEnd');
+            const term1Start = document.getElementById('term1Start');
+            const term1End = document.getElementById('term1End');
+            const term2Start = document.getElementById('term2Start');
+            const term2End = document.getElementById('term2End');
+
+            // Profile
+            const userName = document.getElementById('userName');
+            const userEmail = document.getElementById('userEmail');
+            const userPhone = document.getElementById('userPhone');
+            const currentPassword = document.getElementById('currentPassword');
+            const newPassword = document.getElementById('newPassword');
+            const confirmPassword = document.getElementById('confirmPassword');
+
+            // System
+            const defaultLanguage = document.getElementById('defaultLanguage');
+            const timezone = document.getElementById('timezone');
+            const dateFormat = document.getElementById('dateFormat');
+            const currency = document.getElementById('currency');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+            const notifEmail = document.getElementById('notifEmail');
+            const notifBrowser = document.getElementById('notifBrowser');
+
+            // Buttons / feedback
+            const saveBtn = document.getElementById('saveSettingsBtn');
+            const resetBtn = document.getElementById('resetSettingsBtn');
+            const feedback = document.getElementById('saveFeedback');
+            const feedbackMsg = document.getElementById('feedbackMsg');
+
+            // ---- Default values ----
+            const DEFAULTS = {
+                primaryColor: '#2563eb',
+                secondaryColor: '#64748b',
+                successColor: '#22c55e',
+                dangerColor: '#ef4444',
+                warningColor: '#f59e0b',
+                bgColor: '#f1f5f9',
+                surfaceColor: '#ffffff',
+                borderRadius: '6',
+                schoolName: 'Green Valley School',
+                schoolAddress: '123, Green Valley Road, Pune – 411001, Maharashtra',
+                schoolPhone: '+91 98765 43210',
+                schoolEmail: 'info@greenvalley.edu',
+                schoolLogo: 'assets/icons/favicon.svg',
+                academicYear: '2026-27',
+                sessionStart: '2026-06-01',
+                sessionEnd: '2027-05-31',
+                term1Start: '2026-06-01',
+                term1End: '2026-10-15',
+                term2Start: '2026-11-01',
+                term2End: '2027-03-31',
+                userName: 'Admin User',
+                userEmail: 'admin@school.edu',
+                userPhone: '+91 98765 43210',
+                defaultLanguage: 'en',
+                timezone: 'Asia/Kolkata',
+                dateFormat: 'YYYY-MM-DD',
+                currency: 'INR',
+                sidebarCollapse: 'expanded',
+                notifEmail: '1',
+                notifBrowser: '1'
+            };
+
+            // ---- Load from localStorage ----
+            function loadSettings() {
+                const stored = localStorage.getItem('schoolERP_settings');
+                if (!stored) return;
+                try {
+                    const data = JSON.parse(stored);
+                    Object.keys(data).forEach(key => {
+                        if (key === 'borderRadius') {
+                            borderRadius.value = data[key];
+                            borderRadiusVal.textContent = data[key] + 'px';
+                            root.style.setProperty('--radius', data[key] + 'px');
+                            return;
+                        }
+                        const el = document.getElementById(key);
+                        if (el) {
+                            if (el.type === 'color') {
+                                el.value = data[key];
+                                const hexSpan = document.getElementById(key + 'Hex');
+                                if (hexSpan) hexSpan.textContent = data[key];
+                                root.style.setProperty('--' + key.replace(/([A-Z])/g, '-$1').toLowerCase(), data[key]);
+                            } else {
+                                el.value = data[key];
+                            }
+                        }
+                    });
+                    // Update brand name in sidebar & header
+                    if (data.schoolName) {
+                        document.querySelectorAll('.sidebar-brand-text, .header-title h1').forEach(el => {
+                            if (el.closest('.header-title')) {
+                                // only update the school name part? we'll keep it simple
+                            }
+                        });
+                        // Update header breadcrumb title
+                        const h1 = document.querySelector('.header-title h1');
+                        if (h1 && data.schoolName) {
+                            // don't overwrite page title with school name, keep it as "Settings"
+                        }
+                    }
+                } catch (e) { console.warn('Failed to load settings', e); }
+            }
+
+            // ---- Apply all CSS variables from current form state ----
+            function applyAppearance() {
+                const map = {
+                    primaryColor: primaryColor.value,
+                    secondaryColor: secondaryColor.value,
+                    successColor: successColor.value,
+                    dangerColor: dangerColor.value,
+                    warningColor: warningColor.value,
+                    bgColor: bgColor.value,
+                    surfaceColor: surfaceColor.value
+                };
+                Object.keys(map).forEach(key => {
+                    const cssVar = '--' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
+                    root.style.setProperty(cssVar, map[key]);
+                    const hexSpan = document.getElementById(key + 'Hex');
+                    if (hexSpan) hexSpan.textContent = map[key];
+                });
+                const radius = borderRadius.value;
+                root.style.setProperty('--radius', radius + 'px');
+                borderRadiusVal.textContent = radius + 'px';
+            }
+
+            // ---- Collect all settings into an object ----
+            function collectSettings() {
+                return {
+                    primaryColor: primaryColor.value,
+                    secondaryColor: secondaryColor.value,
+                    successColor: successColor.value,
+                    dangerColor: dangerColor.value,
+                    warningColor: warningColor.value,
+                    bgColor: bgColor.value,
+                    surfaceColor: surfaceColor.value,
+                    borderRadius: borderRadius.value,
+                    schoolName: schoolName.value,
+                    schoolAddress: schoolAddress.value,
+                    schoolPhone: schoolPhone.value,
+                    schoolEmail: schoolEmail.value,
+                    schoolLogo: schoolLogo.value,
+                    academicYear: academicYear.value,
+                    sessionStart: sessionStart.value,
+                    sessionEnd: sessionEnd.value,
+                    term1Start: term1Start.value,
+                    term1End: term1End.value,
+                    term2Start: term2Start.value,
+                    term2End: term2End.value,
+                    userName: userName.value,
+                    userEmail: userEmail.value,
+                    userPhone: userPhone.value,
+                    defaultLanguage: defaultLanguage.value,
+                    timezone: timezone.value,
+                    dateFormat: dateFormat.value,
+                    currency: currency.value,
+                    sidebarCollapse: sidebarCollapse.value,
+                    notifEmail: notifEmail.value,
+                    notifBrowser: notifBrowser.value
+                };
+            }
+
+            // ---- Save settings to localStorage ----
+            function saveSettings() {
+                const data = collectSettings();
+                localStorage.setItem('schoolERP_settings', JSON.stringify(data));
+                applyAppearance();
+                showFeedback('Settings saved successfully!', false);
+                // Also update school name in header/sidebar (simple)
+                const brandEls = document.querySelectorAll('.sidebar-brand-text');
+                brandEls.forEach(el => el.textContent = data.schoolName || 'SchoolERP');
+                // Update header title if it's the school name? we'll keep as "Settings"
+                // Update page subtitle with school name
+                const sub = document.querySelector('.page-subtitle');
+                if (sub) sub.textContent = data.schoolName + ' — Configuration';
+            }
+
+            // ---- Reset to defaults ----
+            function resetToDefaults() {
+                Object.keys(DEFAULTS).forEach(key => {
+                    const el = document.getElementById(key);
+                    if (el) {
+                        if (el.type === 'color') {
+                            el.value = DEFAULTS[key];
+                            const hexSpan = document.getElementById(key + 'Hex');
+                            if (hexSpan) hexSpan.textContent = DEFAULTS[key];
+                        } else {
+                            el.value = DEFAULTS[key];
+                        }
+                    }
+                });
+                borderRadiusVal.textContent = DEFAULTS.borderRadius + 'px';
+                applyAppearance();
+                saveSettings();
+                showFeedback('Reset to default settings.', false);
+            }
+
+            // ---- Feedback toast ----
+            function showFeedback(msg, isError) {
+                feedbackMsg.textContent = msg;
+                feedback.className = 'save-feedback show' + (isError ? ' error' : '');
+                clearTimeout(feedback._timer);
+                feedback._timer = setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 4000);
+            }
+
+            // ---- Real-time preview for appearance changes ----
+            function setupRealtime() {
+                const colorInputs = [primaryColor, secondaryColor, successColor, dangerColor, warningColor, bgColor, surfaceColor];
+                colorInputs.forEach(inp => {
+                    inp.addEventListener('input', function() {
+                        const hexSpan = document.getElementById(this.id + 'Hex');
+                        if (hexSpan) hexSpan.textContent = this.value;
+                        const cssVar = '--' + this.id.replace(/([A-Z])/g, '-$1').toLowerCase();
+                        root.style.setProperty(cssVar, this.value);
+                    });
+                });
+                borderRadius.addEventListener('input', function() {
+                    const val = this.value;
+                    borderRadiusVal.textContent = val + 'px';
+                    root.style.setProperty('--radius', val + 'px');
+                });
+            }
+
+            // ---- Tab switching ----
+            function setupTabs() {
+                const tabs = document.querySelectorAll('.settings-tab');
+                const panels = {
+                    general: document.getElementById('panel-general'),
+                    appearance: document.getElementById('panel-appearance'),
+                    academic: document.getElementById('panel-academic'),
+                    profile: document.getElementById('panel-profile'),
+                    system: document.getElementById('panel-system')
+                };
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        const target = this.dataset.tab;
+                        Object.keys(panels).forEach(key => {
+                            panels[key].classList.toggle('active', key === target);
+                        });
+                    });
+                });
+            }
+
+            // ---- Init ----
+            function init() {
+                loadSettings();
+                applyAppearance();
+                setupRealtime();
+                setupTabs();
+
+                // Save button
+                saveBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Check password match if filled
+                    if (newPassword.value || confirmPassword.value) {
+                        if (newPassword.value !== confirmPassword.value) {
+                            showFeedback('Passwords do not match!', true);
+                            return;
+                        }
+                        if (newPassword.value.length < 6) {
+                            showFeedback('Password must be at least 6 characters.', true);
+                            return;
+                        }
+                    }
+                    saveSettings();
+                });
+
+                // Reset button
+                resetBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (confirm('Reset all settings to default values?')) {
+                        resetToDefaults();
+                    }
+                });
+
+                // Initial school name in sidebar
+                const saved = localStorage.getItem('schoolERP_settings');
+                if (saved) {
+                    try {
+                        const data = JSON.parse(saved);
+                        if (data.schoolName) {
+                            document.querySelectorAll('.sidebar-brand-text').forEach(el => el.textContent = data.schoolName);
+                            const sub = document.querySelector('.page-subtitle');
+                            if (sub) sub.textContent = data.schoolName + ' — Configuration';
+                        }
+                    } catch (e) {}
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+
+        })();
+    </script>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
