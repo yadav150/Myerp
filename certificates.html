@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolERP · Certificates</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+    <!-- ===== SIDEBAR OVERLAY ===== -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-brand">
+            <svg class="sidebar-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+            </svg>
+            <span class="sidebar-brand-text">SchoolERP</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
+                        <span>Dashboard</span>
+                    </a></li>
+                <li class="sidebar-divider">Academic</li>
+                <li class="sidebar-item"><a href="students.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                        <span>Students</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="teachers.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                        <span>Teachers</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="attendance.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                        <span>Attendance</span>
+                    </a></li>
+                <li class="sidebar-divider">Finance</li>
+                <li class="sidebar-item"><a href="fees.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                        <span>Fees</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="salary.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                        <span>Salary</span>
+                    </a></li>
+                <li class="sidebar-divider">Documents</li>
+                <li class="sidebar-item"><a href="id-cards.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                        <span>ID Cards</span>
+                    </a></li>
+                <li class="sidebar-item active"><a href="certificates.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+                        <span>Certificates</span>
+                    </a></li>
+                <li class="sidebar-divider">Communication</li>
+                <li class="sidebar-item"><a href="notices.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                        <span>Notices</span>
+                    </a></li>
+                <li class="sidebar-divider">Administration</li>
+                <li class="sidebar-item"><a href="reports.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                        <span>Reports</span>
+                    </a></li>
+                <li class="sidebar-item"><a href="settings.html" class="sidebar-link">
+                        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v3" /><path d="M12 20v3" /><path d="M4.22 4.22l2.12 2.12" /><path d="M17.66 17.66l2.12 2.12" /><path d="M1 12h3" /><path d="M20 12h3" /><path d="M4.22 19.78l2.12-2.12" /><path d="M17.66 6.34l2.12-2.12" /></svg>
+                        <span>Settings</span>
+                    </a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="sidebar-version">v2.0.0</span>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header" role="banner">
+            <div class="header-left">
+                <button class="header-hamburger" id="hamburgerBtn" aria-label="Toggle sidebar" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+                </button>
+                <div class="header-title">
+                    <h1>Certificates</h1>
+                    <span class="header-breadcrumb">Documents / Certificates</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button class="header-notification" aria-label="Notifications" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                    <span class="notification-badge">4</span>
+                </button>
+
+                <div class="header-profile">
+                    <img src="assets/images/avatar-admin.svg" alt="Admin profile" class="profile-avatar" />
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <button class="profile-toggle" id="profileToggle" aria-label="User menu" type="button">
+                            <span class="profile-name">Admin</span>
+                            <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="settings.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M12 1v3" /><path d="M12 20v3" /><path d="M4.22 4.22l2.12 2.12" /><path d="M17.66 17.66l2.12 2.12" /><path d="M1 12h3" /><path d="M20 12h3" /><path d="M4.22 19.78l2.12-2.12" /><path d="M17.66 6.34l2.12-2.12" /></svg>
+                                Settings
+                            </a>
+                            <hr class="dropdown-divider" />
+                            <button class="dropdown-item" id="logoutBtn" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== PAGE CONTENT ===== -->
+        <main class="page-content" role="main">
+
+            <!-- Page header -->
+            <div class="page-toolbar">
+                <div class="toolbar-left">
+                    <h2 class="page-title">Certificate Management</h2>
+                    <span class="page-subtitle">Issue and manage student certificates</span>
+                </div>
+                <div class="toolbar-right">
+                    <button class="btn btn-primary" id="issueCertificateBtn" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="12" y1="18" x2="12" y2="12" /><line x1="12" y1="18" x2="16" y2="18" /></svg>
+                        Issue Certificate
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <div class="filter-item">
+                        <label for="searchCert" class="visually-hidden">Search</label>
+                        <input type="search" id="searchCert" placeholder="Search student, ID..." class="filter-input" />
+                        <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                    </div>
+                    <div class="filter-item">
+                        <select id="typeFilter" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="Bonafide">Bonafide</option>
+                            <option value="Transfer">Transfer</option>
+                            <option value="Conduct">Conduct</option>
+                            <option value="Scholarship">Scholarship</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="Issued">Issued</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Verified">Verified</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="resetFilters" type="button">Reset</button>
+            </div>
+
+            <!-- Certificates Table -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-wrapper">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Certificate ID</th>
+                                    <th>Student Name</th>
+                                    <th>Certificate Type</th>
+                                    <th>Issue Date</th>
+                                    <th>Status</th>
+                                    <th class="actions-col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CERT-2024-001</td>
+                                    <td>Ananya Sharma</td>
+                                    <td><span class="badge info">Bonafide</span></td>
+                                    <td>2026-09-01</td>
+                                    <td><span class="badge success">Issued</span></td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                        <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                        <button class="action-btn print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg></button>
+                                        <button class="action-btn verify" aria-label="Verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CERT-2024-002</td>
+                                    <td>Rahul Kumar</td>
+                                    <td><span class="badge warning">Transfer</span></td>
+                                    <td>2026-08-28</td>
+                                    <td><span class="badge success">Verified</span></td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                        <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                        <button class="action-btn print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg></button>
+                                        <button class="action-btn verify" aria-label="Verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CERT-2024-003</td>
+                                    <td>Priya Singh</td>
+                                    <td><span class="badge secondary">Conduct</span></td>
+                                    <td>2026-09-05</td>
+                                    <td><span class="badge warning">Pending</span></td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                        <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                        <button class="action-btn print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg></button>
+                                        <button class="action-btn verify" aria-label="Verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CERT-2024-004</td>
+                                    <td>Arjun Nair</td>
+                                    <td><span class="badge success">Scholarship</span></td>
+                                    <td>2026-08-20</td>
+                                    <td><span class="badge success">Issued</span></td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                        <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                        <button class="action-btn print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg></button>
+                                        <button class="action-btn verify" aria-label="Verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CERT-2024-005</td>
+                                    <td>Kavya Reddy</td>
+                                    <td><span class="badge info">Bonafide</span></td>
+                                    <td>2026-09-03</td>
+                                    <td><span class="badge success">Verified</span></td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                        <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                        <button class="action-btn print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg></button>
+                                        <button class="action-btn verify" aria-label="Verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CERT-2024-006</td>
+                                    <td>Vikram Patil</td>
+                                    <td><span class="badge warning">Transfer</span></td>
+                                    <td>2026-08-15</td>
+                                    <td><span class="badge warning">Pending</span></td>
+                                    <td class="actions-cell">
+                                        <button class="action-btn view" aria-label="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></button>
+                                        <button class="action-btn edit" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></button>
+                                        <button class="action-btn print" aria-label="Print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg></button>
+                                        <button class="action-btn verify" aria-label="Verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-bar">
+                        <span class="pagination-info">Showing 1–6 of 38 certificates</span>
+                        <nav class="pagination" aria-label="Table navigation">
+                            <button class="page-btn" disabled aria-label="Previous page">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                            </button>
+                            <button class="page-btn active" aria-label="Page 1">1</button>
+                            <button class="page-btn" aria-label="Page 2">2</button>
+                            <button class="page-btn" aria-label="Page 3">3</button>
+                            <button class="page-btn" aria-label="Page 4">4</button>
+                            <button class="page-btn" aria-label="Next page">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Preview Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Certificate Preview</h3>
+                    <span class="card-subtitle">Sample Bonafide Certificate</span>
+                </div>
+                <div class="card-body">
+                    <div class="certificate-preview">
+                        <div class="certificate">
+                            <div class="cert-border">
+                                <div class="cert-inner">
+                                    <div class="cert-school">Green Valley School</div>
+                                    <div class="cert-title">CERTIFICATE OF BONAFIDE</div>
+                                    <div class="cert-seal">
+                                        <svg viewBox="0 0 60 60" width="60" height="60">
+                                            <circle cx="30" cy="30" r="28" fill="none" stroke="#1e3a5f" stroke-width="2" />
+                                            <circle cx="30" cy="30" r="24" fill="none" stroke="#1e3a5f" stroke-width="1" />
+                                            <text x="30" y="22" font-size="8" text-anchor="middle" fill="#1e3a5f">SCHOOL</text>
+                                            <text x="30" y="32" font-size="8" text-anchor="middle" fill="#1e3a5f">SEAL</text>
+                                            <text x="30" y="42" font-size="6" text-anchor="middle" fill="#1e3a5f">EST. 2005</text>
+                                        </svg>
+                                    </div>
+                                    <div class="cert-body">
+                                        <p class="cert-text">This is to certify that</p>
+                                        <p class="cert-name">Ananya Sharma</p>
+                                        <p class="cert-text">daughter of Mr. Rajesh Sharma &amp; Mrs. Neha Sharma,</p>
+                                        <p class="cert-text">is a bonafide student of our school studying in</p>
+                                        <p class="cert-class">Class 10-A (Roll No. 12)</p>
+                                        <p class="cert-text">for the academic year 2024–2025.</p>
+                                        <p class="cert-text">Her conduct and academic performance have been satisfactory.</p>
+                                    </div>
+                                    <div class="cert-footer">
+                                        <div class="cert-signature">
+                                            <div class="cert-line"></div>
+                                            <span>Principal</span>
+                                        </div>
+                                        <div class="cert-signature">
+                                            <div class="cert-line"></div>
+                                            <span>School Stamp</span>
+                                        </div>
+                                        <div class="cert-signature">
+                                            <div class="cert-line"></div>
+                                            <span>Date: 2026-09-01</span>
+                                        </div>
+                                    </div>
+                                    <div class="cert-id">Certificate ID: CERT-2024-001</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn btn-secondary" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9" /><path d="M18 9h3v8h-3" /><path d="M6 9H3v8h3" /><rect x="6" y="11" width="12" height="8" /></svg> Print</button>
+                        <button class="btn btn-secondary" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg> Download</button>
+                        <button class="btn btn-success" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Verify</button>
+                        <button class="btn btn-primary" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="12" y1="18" x2="12" y2="12" /><line x1="12" y1="18" x2="16" y2="18" /></svg> Issue New</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer" role="contentinfo">
+            <span>&copy; 2026 SchoolERP. All rights reserved.</span>
+            <span>v2.0.0</span>
+        </footer>
+
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="js/navigation.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
