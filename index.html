@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SchoolERP · Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/root.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <style>
+        /* Login-specific styles – lean, centered, no sidebar/header/footer */
+        body {
+            background: var(--background-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: var(--spacing-md);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .login-card {
+            background: var(--surface-color);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-xl);
+            transition: box-shadow var(--transition-normal);
+        }
+
+        .login-brand {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .login-brand .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .login-brand .logo svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--primary-color);
+        }
+
+        .login-brand .tagline {
+            font-size: 0.9rem;
+            color: var(--muted-text);
+            margin-top: 4px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .login-form label {
+            display: block;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            color: var(--text-color);
+        }
+
+        .login-form .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            background: var(--surface-color);
+            color: var(--text-color);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .login-form .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .login-form .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .login-form .form-options label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 400;
+            color: var(--muted-text);
+            cursor: pointer;
+        }
+
+        .login-form .form-options a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-form .form-options a:hover {
+            text-decoration: underline;
+        }
+
+        .login-form .btn-login {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            transition: background var(--transition-fast), transform var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .login-form .btn-login:hover {
+            background: color-mix(in srgb, var(--primary-color) 85%, #000);
+            transform: translateY(-1px);
+        }
+
+        .login-form .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            font-size: 0.8rem;
+            color: var(--muted-text);
+        }
+
+        .login-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .demo-credentials {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--background-color);
+            border-radius: var(--radius);
+            font-size: 0.8rem;
+            color: var(--muted-text);
+            text-align: center;
+            border: 1px dashed var(--border-color);
+        }
+
+        .demo-credentials strong {
+            color: var(--text-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: var(--spacing-lg);
+            }
+            .login-brand .logo {
+                font-size: 1.3rem;
+            }
+            .login-brand .logo svg {
+                width: 32px;
+                height: 32px;
+            }
+            .login-form .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-card">
+
+            <!-- Brand -->
+            <div class="login-brand">
+                <a href="dashboard.html" class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                    </svg>
+                    SchoolERP
+                </a>
+                <p class="tagline">School Management System</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="login-form" id="loginForm" action="dashboard.html" method="GET">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="admin@school.edu" value="admin@school.edu" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" value="password123" required />
+                </div>
+
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" checked /> Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Sign In</button>
+            </form>
+
+            <!-- Demo credentials hint -->
+            <div class="demo-credentials">
+                <strong>Demo credentials</strong><br />
+                Email: <strong>admin@school.edu</strong> &nbsp;·&nbsp; Password: <strong>password123</strong>
+            </div>
+
+            <div class="login-footer">
+                &copy; 2026 SchoolERP. All rights reserved. &nbsp;·&nbsp; <a href="#">Privacy</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Simple JS: prevent empty submission, show alert on login (Phase 1) -->
+    <script>
+        (function() {
+            'use strict';
+
+            const form = document.getElementById('loginForm');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Simple validation
+                if (!email.value.trim() || !password.value.trim()) {
+                    alert('Please fill in both email and password.');
+                    return;
+                }
+
+                // Phase 1: static login – redirect to dashboard
+                // In Phase 2, this will be replaced with Firebase auth.
+                alert('Welcome to SchoolERP! Redirecting to dashboard…');
+                window.location.href = 'dashboard.html';
+            });
+
+            // Allow Enter key to submit
+            form.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    form.dispatchEvent(new Event('submit'));
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
