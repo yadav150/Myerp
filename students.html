@@ -11,315 +11,220 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/forms.css">
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/filters.css">
-    <link rel="stylesheet" href="css/pagination.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/pagination.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body class="erp-body" data-page="students">
 
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-brand">
-            <img src="assets/images/logo.svg"
-                 alt="[Your School Name] Logo"
-                 class="sidebar-logo">
 
-            <div class="sidebar-brand-text">
+            <img
+                src="assets/images/logo.svg"
+                alt="[Your School Name] Logo">
+
+            <div>
                 <strong>[Your School Name]</strong>
                 <span>School ERP</span>
             </div>
+
         </div>
 
         <nav class="sidebar-nav">
 
-            <div class="nav-section">
-                <span class="nav-section-title">Main</span>
+            <a href="dashboard.html"
+               class="nav-item"
+               data-page="dashboard">
+                <span class="icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
 
-                <a href="dashboard.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="3" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="3" width="7" height="7"></rect>
-                            <rect x="3" y="14" width="7" height="7"></rect>
-                            <rect x="14" y="14" width="7" height="7"></rect>
-                        </svg>
-                    </span>
-                    Dashboard
-                </a>
-            </div>
+            <a href="students.html"
+               class="nav-item"
+               data-page="students">
+                <span class="icon">ST</span>
+                <span>Students</span>
+            </a>
 
-            <div class="nav-section">
-                <span class="nav-section-title">Management</span>
+            <a href="teachers.html"
+               class="nav-item"
+               data-page="teachers">
+                <span class="icon">TR</span>
+                <span>Teachers</span>
+            </a>
 
-                <a href="students.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="9" cy="8" r="3"></circle>
-                            <path d="M3 20c0-3.2 2.7-5 6-5s6 1.8 6 5"></path>
-                            <path d="M16 5.5a3 3 0 0 1 0 5"></path>
-                            <path d="M18 15c2 .5 3 2 3 5"></path>
-                        </svg>
-                    </span>
-                    Students
-                </a>
+            <a href="staff.html"
+               class="nav-item"
+               data-page="staff">
+                <span class="icon">SF</span>
+                <span>Staff</span>
+            </a>
 
-                <a href="teachers.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="9" cy="8" r="3"></circle>
-                            <path d="M3 20c0-3.2 2.7-5 6-5s6 1.8 6 5"></path>
-                            <path d="M14 7h7"></path>
-                            <path d="M17.5 4v6"></path>
-                        </svg>
-                    </span>
-                    Teachers
-                </a>
+            <a href="attendance.html"
+               class="nav-item"
+               data-page="attendance">
+                <span class="icon">AT</span>
+                <span>Attendance</span>
+            </a>
 
-                <a href="staff.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="4" y="3" width="16" height="18" rx="1"></rect>
-                            <circle cx="12" cy="9" r="3"></circle>
-                            <path d="M8 17c.8-2 2.1-3 4-3s3.2 1 4 3"></path>
-                        </svg>
-                    </span>
-                    Staff
-                </a>
-            </div>
+            <a href="fees.html"
+               class="nav-item"
+               data-page="fees">
+                <span class="icon">FE</span>
+                <span>Fees</span>
+            </a>
 
-            <div class="nav-section">
-                <span class="nav-section-title">Academic</span>
+            <a href="salary.html"
+               class="nav-item"
+               data-page="salary">
+                <span class="icon">SL</span>
+                <span>Salary</span>
+            </a>
 
-                <a href="classes.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M3 5h18"></path>
-                            <path d="M3 9h18"></path>
-                            <path d="M3 13h18"></path>
-                            <path d="M3 17h18"></path>
-                        </svg>
-                    </span>
-                    Classes &amp; Sections
-                </a>
+            <a href="classes.html"
+               class="nav-item"
+               data-page="classes">
+                <span class="icon">CL</span>
+                <span>Classes & Sections</span>
+            </a>
 
-                <a href="subjects.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4z"></path>
-                            <path d="M7 4v16"></path>
-                        </svg>
-                    </span>
-                    Subjects
-                </a>
+            <a href="subjects.html"
+               class="nav-item"
+               data-page="subjects">
+                <span class="icon">SB</span>
+                <span>Subjects</span>
+            </a>
 
-                <a href="attendance.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="3" y="4" width="18" height="17" rx="1"></rect>
-                            <path d="M7 2v4"></path>
-                            <path d="M17 2v4"></path>
-                            <path d="M7 11l3 3 7-7"></path>
-                        </svg>
-                    </span>
-                    Attendance
-                </a>
+            <a href="examinations.html"
+               class="nav-item"
+               data-page="examinations">
+                <span class="icon">EX</span>
+                <span>Examinations</span>
+            </a>
 
-                <a href="examinations.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6 3h12v18H6z"></path>
-                            <path d="M9 7h6"></path>
-                            <path d="M9 11h6"></path>
-                            <path d="M9 15h4"></path>
-                        </svg>
-                    </span>
-                    Examinations
-                </a>
+            <a href="reports.html"
+               class="nav-item"
+               data-page="reports">
+                <span class="icon">RP</span>
+                <span>Reports & Analytics</span>
+            </a>
 
-                <a href="exam-results.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4 19V5"></path>
-                            <path d="M4 19h16"></path>
-                            <path d="M8 16v-5"></path>
-                            <path d="M12 16V8"></path>
-                            <path d="M16 16V6"></path>
-                        </svg>
-                    </span>
-                    Results
-                </a>
-            </div>
+            <a href="settings.html"
+               class="nav-item"
+               data-page="settings">
+                <span class="icon">SE</span>
+                <span>Settings</span>
+            </a>
 
-            <div class="nav-section">
-                <span class="nav-section-title">Finance</span>
-
-                <a href="fees.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="3" y="5" width="18" height="14" rx="1"></rect>
-                            <path d="M3 9h18"></path>
-                            <path d="M7 14h4"></path>
-                        </svg>
-                    </span>
-                    Fees
-                </a>
-
-                <a href="fee-receipts.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M5 3h14v18l-3-2-4 2-4-2-3 2V3z"></path>
-                            <path d="M8 8h8"></path>
-                            <path d="M8 12h8"></path>
-                        </svg>
-                    </span>
-                    Fee Receipts
-                </a>
-
-                <a href="salary.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="3" y="5" width="18" height="14" rx="1"></rect>
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M6 9h.01"></path>
-                            <path d="M18 15h.01"></path>
-                        </svg>
-                    </span>
-                    Salary
-                </a>
-
-                <a href="salary-slips.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6 3h12v18H6z"></path>
-                            <path d="M9 8h6"></path>
-                            <path d="M9 12h6"></path>
-                            <path d="M9 16h4"></path>
-                        </svg>
-                    </span>
-                    Salary Slips
-                </a>
-            </div>
-
-            <div class="nav-section">
-                <span class="nav-section-title">Analytics</span>
-
-                <a href="reports.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4 20V10"></path>
-                            <path d="M10 20V4"></path>
-                            <path d="M16 20v-7"></path>
-                            <path d="M22 20H2"></path>
-                        </svg>
-                    </span>
-                    Reports &amp; Analytics
-                </a>
-            </div>
-
-            <div class="nav-section">
-                <span class="nav-section-title">System</span>
-
-                <a href="settings.html" class="nav-item">
-                    <span class="nav-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.2h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-1.7-1.7.1-.1A1.7 1.7 0 0 0 8.5 15a1.7 1.7 0 0 0-1.5-1H6.8v-2.4H7a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.7-1.7.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5v-.2h2.4v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.7 1.7-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.2V14H21a1.7 1.7 0 0 0-1.6 1z"></path>
-                        </svg>
-                    </span>
-                    Settings
-                </a>
-
-            </div>
         </nav>
 
         <div class="sidebar-footer">
-            <span>Designed and Developed by</span>
-            <strong>Yadav Web Technologies</strong>
+            <span>ERP System</span>
         </div>
 
     </aside>
 
 
+    <!-- =========================================
+         MAIN WRAPPER
+    ========================================== -->
+
     <div class="main-wrapper">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
 
         <header class="top-header">
 
             <div class="header-left">
 
-                <button type="button"
-                        class="icon-button sidebar-toggle"
-                        id="sidebarToggle"
-                        aria-label="Toggle sidebar">
-
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4 6h16"></path>
-                        <path d="M4 12h16"></path>
-                        <path d="M4 18h16"></path>
-                    </svg>
-
+                <button
+                    type="button"
+                    class="icon-button sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Toggle Sidebar">
+                    ☰
                 </button>
 
                 <div class="page-heading">
+
                     <h1>Students</h1>
-                    <span>Manage student records</span>
+
+                    <p>
+                        Manage student records and information
+                    </p>
+
                 </div>
 
             </div>
 
+
             <div class="header-right">
 
                 <div class="header-session">
+
                     <span>Academic Session</span>
+
                     <strong>[Academic Session]</strong>
+
                 </div>
 
-                <button type="button"
-                        class="icon-button"
-                        id="notificationButton"
-                        aria-label="Notifications">
 
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-                        <path d="M10 21h4"></path>
-                    </svg>
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton">
+
+                    <span class="profile-avatar">
+                        AD
+                    </span>
+
+                    <span class="profile-info">
+
+                        <strong>
+                            Administrator
+                        </strong>
+
+                        <small>
+                            Admin
+                        </small>
+
+                    </span>
 
                 </button>
 
-                <div class="profile-menu">
 
-                    <button type="button"
-                            class="profile-button"
-                            id="profileButton">
+                <div
+                    class="profile-dropdown"
+                    id="profileDropdown">
 
-                        <span class="profile-avatar">A</span>
+                    <a href="school-profile.html">
+                        My Profile
+                    </a>
 
-                        <span class="profile-info">
-                            <strong>Administrator</strong>
-                            <small>Admin</small>
-                        </span>
+                    <a href="settings.html">
+                        Settings
+                    </a>
 
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-
+                    <button
+                        type="button"
+                        id="logoutButton">
+                        Logout
                     </button>
-
-                    <div class="profile-dropdown" id="profileDropdown">
-
-                        <a href="settings.html">My Profile</a>
-                        <a href="settings.html">Settings</a>
-
-                        <button type="button" id="logoutButton">
-                            Logout
-                        </button>
-
-                    </div>
 
                 </div>
 
@@ -328,41 +233,42 @@
         </header>
 
 
+        <!-- =====================================
+             PAGE CONTENT
+        ====================================== -->
+
         <main class="page-content">
+
+
+            <!-- PAGE TOOLBAR -->
 
             <div class="page-toolbar">
 
                 <div>
-                    <h2>Student Records</h2>
-                    <p class="result-summary" id="studentSummary">
-                        Loading student records...
+
+                    <h2>
+                        Student Management
+                    </h2>
+
+                    <p>
+                        Search, filter and manage registered students.
                     </p>
+
                 </div>
+
 
                 <div class="toolbar-actions">
 
-                    <button type="button"
-                            class="btn btn-outline"
-                            id="refreshStudentsButton">
-
-                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M20 11a8 8 0 0 0-14.9-4"></path>
-                            <path d="M4 4v5h5"></path>
-                            <path d="M4 13a8 8 0 0 0 14.9 4"></path>
-                            <path d="M20 20v-5h-5"></path>
-                        </svg>
-
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="refreshStudents">
                         Refresh
                     </button>
 
-                    <a href="student-add.html"
-                       class="btn btn-primary">
-
-                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 5v14"></path>
-                            <path d="M5 12h14"></path>
-                        </svg>
-
+                    <a
+                        href="student-add.html"
+                        class="btn btn-primary">
                         Add Student
                     </a>
 
@@ -371,88 +277,261 @@
             </div>
 
 
+            <!-- =================================
+                 SUMMARY CARDS
+            ================================== -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-card-content">
+
+                        <span class="stat-label">
+                            Total Students
+                        </span>
+
+                        <strong
+                            class="stat-value"
+                            id="totalStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-card-content">
+
+                        <span class="stat-label">
+                            Active Students
+                        </span>
+
+                        <strong
+                            class="stat-value"
+                            id="activeStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-card-content">
+
+                        <span class="stat-label">
+                            Inactive Students
+                        </span>
+
+                        <strong
+                            class="stat-value"
+                            id="inactiveStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 FILTER SECTION
+            ================================== -->
+
             <section class="filter-card">
 
                 <div class="filter-header">
-                    <h3 class="filter-title">Search &amp; Filter</h3>
+
+                    <div>
+
+                        <h3>
+                            Search & Filters
+                        </h3>
+
+                        <p>
+                            Find students by name, admission number,
+                            student ID, guardian or phone.
+                        </p>
+
+                    </div>
+
                 </div>
+
 
                 <div class="filter-grid">
 
-                    <div class="form-group search-field">
-                        <label for="studentSearch">Search</label>
+                    <div class="filter-group filter-search">
 
-                        <svg class="search-icon"
-                             viewBox="0 0 24 24"
-                             aria-hidden="true">
+                        <label for="studentSearch">
+                            Search Student
+                        </label>
 
-                            <circle cx="11" cy="11" r="7"></circle>
-                            <path d="m20 20-4-4"></path>
+                        <input
+                            type="search"
+                            id="studentSearch"
+                            placeholder="Search by name, admission no., ID, guardian or phone">
 
-                        </svg>
-
-                        <input type="search"
-                               id="studentSearch"
-                               placeholder="Name, admission no., student ID...">
                     </div>
 
-                    <div class="form-group">
-                        <label for="classFilter">Class</label>
+
+                    <div class="filter-group">
+
+                        <label for="classFilter">
+                            Class
+                        </label>
 
                         <select id="classFilter">
-                            <option value="">All Classes</option>
-                            <option value="Nursery">Nursery</option>
-                            <option value="LKG">LKG</option>
-                            <option value="UKG">UKG</option>
-                            <option value="1">Class 1</option>
-                            <option value="2">Class 2</option>
-                            <option value="3">Class 3</option>
-                            <option value="4">Class 4</option>
-                            <option value="5">Class 5</option>
-                            <option value="6">Class 6</option>
-                            <option value="7">Class 7</option>
-                            <option value="8">Class 8</option>
-                            <option value="9">Class 9</option>
-                            <option value="10">Class 10</option>
-                            <option value="11">Class 11</option>
-                            <option value="12">Class 12</option>
+
+                            <option value="">
+                                All Classes
+                            </option>
+
+                            <option value="Nursery">
+                                Nursery
+                            </option>
+
+                            <option value="LKG">
+                                LKG
+                            </option>
+
+                            <option value="UKG">
+                                UKG
+                            </option>
+
+                            <option value="Class 1">
+                                Class 1
+                            </option>
+
+                            <option value="Class 2">
+                                Class 2
+                            </option>
+
+                            <option value="Class 3">
+                                Class 3
+                            </option>
+
+                            <option value="Class 4">
+                                Class 4
+                            </option>
+
+                            <option value="Class 5">
+                                Class 5
+                            </option>
+
+                            <option value="Class 6">
+                                Class 6
+                            </option>
+
+                            <option value="Class 7">
+                                Class 7
+                            </option>
+
+                            <option value="Class 8">
+                                Class 8
+                            </option>
+
+                            <option value="Class 9">
+                                Class 9
+                            </option>
+
+                            <option value="Class 10">
+                                Class 10
+                            </option>
+
+                            <option value="Class 11">
+                                Class 11
+                            </option>
+
+                            <option value="Class 12">
+                                Class 12
+                            </option>
+
                         </select>
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="sectionFilter">Section</label>
+
+                    <div class="filter-group">
+
+                        <label for="sectionFilter">
+                            Section
+                        </label>
 
                         <select id="sectionFilter">
-                            <option value="">All Sections</option>
-                            <option value="A">Section A</option>
-                            <option value="B">Section B</option>
-                            <option value="C">Section C</option>
+
+                            <option value="">
+                                All Sections
+                            </option>
+
+                            <option value="A">
+                                A
+                            </option>
+
+                            <option value="B">
+                                B
+                            </option>
+
+                            <option value="C">
+                                C
+                            </option>
+
+                            <option value="D">
+                                D
+                            </option>
+
                         </select>
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="statusFilter">Status</label>
+
+                    <div class="filter-group">
+
+                        <label for="statusFilter">
+                            Status
+                        </label>
 
                         <select id="statusFilter">
-                            <option value="">All Status</option>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+
+                            <option value="">
+                                All Status
+                            </option>
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
                         </select>
+
                     </div>
 
                 </div>
 
+
                 <div class="filter-actions">
 
-                    <button type="button"
-                            class="btn btn-primary"
-                            id="applyFiltersButton">
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="applyStudentFilters">
                         Apply Filters
                     </button>
 
-                    <button type="button"
-                            class="btn btn-outline"
-                            id="resetFiltersButton">
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="resetStudentFilters">
                         Reset
                     </button>
 
@@ -461,115 +540,204 @@
             </section>
 
 
-            <section class="dashboard-card">
+            <!-- =================================
+                 STUDENT TABLE
+            ================================== -->
 
-                <div class="card-header">
-                    <h3>Students</h3>
+            <section class="data-card">
+
+                <div class="data-card-header">
+
+                    <div>
+
+                        <h3>
+                            Student Records
+                        </h3>
+
+                        <p>
+                            Registered student information
+                        </p>
+
+                    </div>
+
                 </div>
+
 
                 <div class="table-wrapper">
 
                     <table class="data-table">
 
                         <thead>
+
                             <tr>
-                                <th>Admission No.</th>
-                                <th>Student ID</th>
-                                <th>Student Name</th>
-                                <th>Gender</th>
-                                <th>Date of Birth</th>
-                                <th>Class</th>
-                                <th>Section</th>
-                                <th>Parent / Guardian</th>
-                                <th>Phone</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+
+                                <th>
+                                    Admission No.
+                                </th>
+
+                                <th>
+                                    Student ID
+                                </th>
+
+                                <th>
+                                    Student Name
+                                </th>
+
+                                <th>
+                                    Gender
+                                </th>
+
+                                <th>
+                                    DOB
+                                </th>
+
+                                <th>
+                                    Class
+                                </th>
+
+                                <th>
+                                    Section
+                                </th>
+
+                                <th>
+                                    Parent / Guardian
+                                </th>
+
+                                <th>
+                                    Phone
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Actions
+                                </th>
+
                             </tr>
+
                         </thead>
 
-                        <tbody id="studentsTableBody"></tbody>
+
+                        <tbody id="studentTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="11"
+                                    class="empty-row">
+                                    Loading student records...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
 
                     </table>
 
                 </div>
 
 
-                <div class="pagination-wrapper">
+                <!-- PAGINATION -->
 
-                    <div class="pagination-info"
-                         id="paginationInfo">
-                    </div>
-
-                    <div class="pagination"
-                         id="studentsPagination">
-                    </div>
-
+                <div
+                    class="pagination-container"
+                    id="studentPagination">
                 </div>
 
             </section>
 
+
+            <!-- MESSAGE -->
+
+            <div
+                id="studentListMessage"
+                class="form-message hidden">
+            </div>
+
+
         </main>
 
 
-        <footer class="main-footer">
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="erp-footer">
+
             <span>
-                &copy; <span id="currentYear"></span>
-                [Your School Name]. All rights reserved.
+                &copy;
+                <span class="current-year"></span>
+                [Your School Name].
+                All Rights Reserved.
             </span>
 
             <span>
-                Designed and Developed by
-                <strong>Yadav Web Technologies</strong>
+                Designed and Developed by Yadav Web Technologies
             </span>
+
         </footer>
 
     </div>
 
 
-    <!-- Delete Confirmation Modal -->
+    <!-- =========================================
+         DEACTIVATE STUDENT MODAL
+    ========================================== -->
 
-    <div class="modal-overlay hidden" id="deleteStudentModal">
+    <div
+        class="modal-overlay"
+        id="deactivateStudentModal">
 
         <div class="modal">
 
             <div class="modal-header">
 
-                <h3>Confirm Action</h3>
+                <h3>
+                    Deactivate Student
+                </h3>
 
-                <button type="button"
-                        class="modal-close"
-                        data-close-modal="deleteStudentModal"
-                        aria-label="Close">
-
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M6 6l12 12"></path>
-                        <path d="M18 6 6 18"></path>
-                    </svg>
-
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeDeactivateStudent"
+                    aria-label="Close">
+                    ×
                 </button>
 
             </div>
 
+
             <div class="modal-body">
 
-                <p id="deleteStudentMessage">
-                    Are you sure you want to deactivate this student?
+                <p>
+                    Are you sure you want to deactivate
+                    <strong id="deactivateStudentName"></strong>?
+                </p>
+
+                <p>
+                    The student will remain in the system but
+                    their status will be changed to Inactive.
                 </p>
 
             </div>
 
+
             <div class="modal-actions">
 
-                <button type="button"
-                        class="btn btn-outline"
-                        data-close-modal="deleteStudentModal">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelDeactivateStudent">
                     Cancel
                 </button>
 
-                <button type="button"
-                        class="btn btn-danger"
-                        id="confirmDeleteStudentButton">
-                    Deactivate Student
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="confirmDeactivateStudent">
+                    Deactivate
                 </button>
 
             </div>
@@ -578,6 +746,10 @@
 
     </div>
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
     <script src="js/script.js"></script>
     <script src="js/navigation.js"></script>
