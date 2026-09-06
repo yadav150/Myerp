@@ -168,3 +168,59 @@ ol {
 .developer-credit strong {
     color: var(--text-color);
 }
+/*----------------------------*/
+.page-content {
+    padding: 24px;
+}
+
+.page-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.page-toolbar h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+.page-toolbar p {
+    margin: 0;
+}
+
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.toolbar-actions .icon {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+@media (max-width: 700px) {
+    .page-content {
+        padding: 16px;
+    }
+
+    .page-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .toolbar-actions {
+        width: 100%;
+    }
+
+    .toolbar-actions .btn {
+        flex: 1;
+    }
+}
