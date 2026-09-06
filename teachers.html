@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teachers | [Your School Name] ERP</title>
+    <meta
+        name="description"
+        content="Teacher management module for [Your School Name] ERP."
+    >
+
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/pagination.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="erp-body" data-page="teachers">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <a href="dashboard.html" class="sidebar-brand-link">
+                <img
+                    src="assets/images/logo.svg"
+                    alt="[Your School Name] Logo"
+                    class="sidebar-logo"
+                >
+
+                <div class="sidebar-brand-text">
+                    <strong>[Your School Name]</strong>
+                    <span>ERP System</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Main navigation">
+
+            <div class="nav-section">
+                <span class="nav-section-title">Main</span>
+
+                <a href="dashboard.html" class="nav-link" data-page-link="dashboard">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">People</span>
+
+                <a href="students.html" class="nav-link" data-page-link="students">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </span>
+                    <span>Students</span>
+                </a>
+
+                <a href="teachers.html" class="nav-link" data-page-link="teachers">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <path d="M8 7h8"></path>
+                            <path d="M8 11h8"></path>
+                        </svg>
+                    </span>
+                    <span>Teachers</span>
+                </a>
+
+                <a href="staff.html" class="nav-link" data-page-link="staff">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+                    <span>Staff</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">Academic</span>
+
+                <a href="attendance.html" class="nav-link" data-page-link="attendance">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="17" rx="2"></rect>
+                            <path d="M16 2v4"></path>
+                            <path d="M8 2v4"></path>
+                            <path d="M3 10h18"></path>
+                            <path d="m8 15 2 2 5-5"></path>
+                        </svg>
+                    </span>
+                    <span>Attendance</span>
+                </a>
+
+                <a href="classes.html" class="nav-link" data-page-link="classes">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 5h18"></path>
+                            <path d="M3 12h18"></path>
+                            <path d="M3 19h18"></path>
+                            <path d="M7 3v4"></path>
+                            <path d="M17 10v4"></path>
+                            <path d="M9 17v4"></path>
+                        </svg>
+                    </span>
+                    <span>Classes &amp; Sections</span>
+                </a>
+
+                <a href="subjects.html" class="nav-link" data-page-link="subjects">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </span>
+                    <span>Subjects</span>
+                </a>
+
+                <a href="examinations.html" class="nav-link" data-page-link="examinations">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <path d="M8 13h8"></path>
+                            <path d="M8 17h5"></path>
+                        </svg>
+                    </span>
+                    <span>Examinations</span>
+                </a>
+
+                <a href="exam-results.html" class="nav-link" data-page-link="results">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19V5"></path>
+                            <path d="M4 19h16"></path>
+                            <rect x="7" y="12" width="2.5" height="5"></rect>
+                            <rect x="11" y="9" width="2.5" height="8"></rect>
+                            <rect x="15" y="6" width="2.5" height="11"></rect>
+                        </svg>
+                    </span>
+                    <span>Results</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">Finance</span>
+
+                <a href="fees.html" class="nav-link" data-page-link="fees">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                            <path d="M3 10h18"></path>
+                            <path d="M7 15h4"></path>
+                        </svg>
+                    </span>
+                    <span>Fees</span>
+                </a>
+
+                <a href="fee-receipts.html" class="nav-link" data-page-link="fee-receipts">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"></path>
+                            <path d="M9 7h6"></path>
+                            <path d="M9 11h6"></path>
+                            <path d="M9 15h4"></path>
+                        </svg>
+                    </span>
+                    <span>Fee Receipts</span>
+                </a>
+
+                <a href="salary.html" class="nav-link" data-page-link="salary">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="6" width="18" height="13" rx="2"></rect>
+                            <path d="M7 10h.01"></path>
+                            <path d="M17 15h.01"></path>
+                            <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+                        </svg>
+                    </span>
+                    <span>Salary</span>
+                </a>
+
+                <a href="salary-slips.html" class="nav-link" data-page-link="salary-slips">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"></path>
+                            <path d="M9 7h6"></path>
+                            <path d="M9 11h6"></path>
+                            <path d="M9 15h3"></path>
+                        </svg>
+                    </span>
+                    <span>Salary Slips</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">Reports</span>
+
+                <a href="reports.html" class="nav-link" data-page-link="reports">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19V5"></path>
+                            <path d="M4 19h16"></path>
+                            <path d="M7 16v-4"></path>
+                            <path d="M11 16V8"></path>
+                            <path d="M15 16v-6"></path>
+                            <path d="M19 16v-9"></path>
+                        </svg>
+                    </span>
+                    <span>Reports &amp; Analytics</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <span class="nav-section-title">System</span>
+
+                <a href="settings.html" class="nav-link" data-page-link="settings">
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06-1.41 1.41-.06-.06A1.65 1.65 0 0 0 16.5 18a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.5 1.2V20h-2v-.2a1.65 1.65 0 0 0-.5-1.2 1.65 1.65 0 0 0-1-.6 1.65 1.65 0 0 0-1.82.33l-.06.06-1.41-1.41.06-.06A1.65 1.65 0 0 0 8 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1.2-.5H6v-2h.2a1.65 1.65 0 0 0 1.2-.5 1.65 1.65 0 0 0 .6-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06 1.41-1.41.06.06A1.65 1.65 0 0 0 11 7.5a1.65 1.65 0 0 0 1-.6 1.65 1.65 0 0 0 .5-1.2V5h2v.2a1.65 1.65 0 0 0 .5 1.2 1.65 1.65 0 0 0 1 .6 1.65 1.65 0 0 0 1.82-.33l.06-.06 1.41 1.41-.06.06A1.65 1.65 0 0 0 18 10a1.65 1.65 0 0 0 .6 1 1.65 1.65 0 0 0 1.2.5h.2v2h-.2a1.65 1.65 0 0 0-1.2.5 1.65 1.65 0 0 0-.6 1z"></path>
+                        </svg>
+                    </span>
+                    <span>Settings</span>
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>Designed and Developed by</p>
+            <strong>Yadav Web Technologies</strong>
+        </div>
+
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <header class="erp-header">
+
+            <div class="header-left">
+
+                <button
+                    type="button"
+                    class="sidebar-toggle"
+                    id="sidebarToggle"
+                    aria-label="Toggle sidebar"
+                    aria-controls="sidebar"
+                    aria-expanded="true"
+                >
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="page-heading">
+                    <h1>Teachers</h1>
+                    <p>Manage teaching staff and teacher records</p>
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <div class="header-session">
+                    <span>Academic Session</span>
+                    <strong>[Academic Session]</strong>
+                </div>
+
+                <button
+                    type="button"
+                    class="icon-button"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                    title="Notifications"
+                >
+                    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="notification-count">0</span>
+                </button>
+
+                <div class="profile-menu-wrapper">
+
+                    <button
+                        type="button"
+                        class="profile-button"
+                        id="profileButton"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                    >
+                        <span class="profile-avatar">A</span>
+
+                        <span class="profile-info">
+                            <strong>Administrator</strong>
+                            <small>Admin</small>
+                        </span>
+
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="profile-dropdown" id="profileDropdown">
+
+                        <a href="settings.html">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06-1.41 1.41-.06-.06A1.65 1.65 0 0 0 16.5 18a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.5 1.2V20h-2v-.2a1.65 1.65 0 0 0-.5-1.2 1.65 1.65 0 0 0-1-.6 1.65 1.65 0 0 0-1.82.33l-.06.06-1.41-1.41.06-.06A1.65 1.65 0 0 0 8 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1.2-.5H6v-2h.2a1.65 1.65 0 0 0 1.2-.5 1.65 1.65 0 0 0 .6-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06 1.41-1.41.06.06A1.65 1.65 0 0 0 11 7.5a1.65 1.65 0 0 0 1-.6 1.65 1.65 0 0 0 .5-1.2V5h2v.2a1.65 1.65 0 0 0 .5 1.2 1.65 1.65 0 0 0 1 .6 1.65 1.65 0 0 0 1.82-.33l.06-.06 1.41 1.41-.06.06A1.65 1.65 0 0 0 18 10a1.65 1.65 0 0 0 .6 1 1.65 1.65 0 0 0 1.2.5h.2v2h-.2a1.65 1.65 0 0 0-1.2.5 1.65 1.65 0 0 0-.6 1z"></path>
+                            </svg>
+                            <span>Settings</span>
+                        </a>
+
+                        <button type="button" id="logoutButton">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            <span>Logout</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <main class="page-content">
+
+            <div class="page-toolbar">
+
+                <div class="toolbar-title">
+                    <h2>Teacher Management</h2>
+                    <p>Add, search, view and manage teacher records.</p>
+                </div>
+
+                <div class="toolbar-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="refreshTeachers"
+                    >
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"></path>
+                            <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"></path>
+                        </svg>
+                        <span>Refresh</span>
+                    </button>
+
+                    <a href="teacher-add.html" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add Teacher</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Summary Cards -->
+            <section class="stats-grid" aria-label="Teacher summary">
+
+                <article class="stat-card">
+                    <div class="stat-card-content">
+                        <span class="stat-label">Total Teachers</span>
+                        <strong class="stat-value" id="totalTeachers">0</strong>
+                    </div>
+
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-card-content">
+                        <span class="stat-label">Active Teachers</span>
+                        <strong class="stat-value" id="activeTeachers">0</strong>
+                    </div>
+
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <polyline points="8 12 11 15 16 9"></polyline>
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-card-content">
+                        <span class="stat-label">Inactive Teachers</span>
+                        <strong class="stat-value" id="inactiveTeachers">0</strong>
+                    </div>
+
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <line x1="8" y1="8" x2="16" y2="16"></line>
+                            <line x1="16" y1="8" x2="8" y2="16"></line>
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-card-content">
+                        <span class="stat-label">Teaching Staff</span>
+                        <strong class="stat-value" id="teachingStaffCount">0</strong>
+                    </div>
+
+                    <div class="stat-card-icon">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Message Area -->
+            <div
+                id="teacherMessage"
+                class="form-message hidden"
+                role="alert"
+                aria-live="polite"
+            ></div>
+
+            <!-- Filters -->
+            <section class="filter-card">
+
+                <div class="filter-card-header">
+                    <div>
+                        <h3>Search &amp; Filter</h3>
+                        <p>Find teachers by name, ID, phone, subject or status.</p>
+                    </div>
+                </div>
+
+                <div class="filter-grid">
+
+                    <div class="form-group">
+                        <label for="teacherSearch">Search</label>
+
+                        <input
+                            type="search"
+                            id="teacherSearch"
+                            name="teacherSearch"
+                            placeholder="Search by name, ID, phone or subject"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherStatusFilter">Status</label>
+
+                        <select id="teacherStatusFilter" name="teacherStatusFilter">
+                            <option value="">All Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherGenderFilter">Gender</label>
+
+                        <select id="teacherGenderFilter" name="teacherGenderFilter">
+                            <option value="">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacherTypeFilter">Teacher Type</label>
+
+                        <select id="teacherTypeFilter" name="teacherTypeFilter">
+                            <option value="">All Types</option>
+                            <option value="Permanent">Permanent</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Guest">Guest</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="filter-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="applyTeacherFilters"
+                    >
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                        </svg>
+                        <span>Apply Filters</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="resetTeacherFilters"
+                    >
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <polyline points="23 20 23 14 17 14"></polyline>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10"></path>
+                            <path d="M3.51 15a9 9 0 0 0 14.85 3.36L23 14"></path>
+                        </svg>
+                        <span>Reset</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Teacher Table -->
+            <section class="data-card">
+
+                <div class="data-card-header">
+
+                    <div>
+                        <h3>Teacher Records</h3>
+                        <p>Complete list of registered teachers.</p>
+                    </div>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>Teacher ID</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Teacher Type</th>
+                                <th>Qualification</th>
+                                <th>Subjects</th>
+                                <th>Phone</th>
+                                <th>Joining Date</th>
+                                <th>Salary</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="teacherTableBody">
+                            <tr>
+                                <td colspan="11" class="empty-table-cell">
+                                    Loading teacher records...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div
+                    class="pagination-container"
+                    id="teacherPagination"
+                    aria-label="Teacher pagination"
+                ></div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="erp-footer">
+
+            <div class="footer-left">
+                <span>&copy; <span id="currentYear"></span> [Your School Name]. All rights reserved.</span>
+            </div>
+
+            <div class="footer-right">
+                <span>Designed and Developed by <strong>Yadav Web Technologies</strong></span>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- Deactivate Teacher Modal -->
+    <div
+        class="modal-overlay"
+        id="deactivateTeacherModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="deactivateTeacherTitle"
+        >
+
+            <div class="modal-header">
+
+                <div>
+                    <h3 id="deactivateTeacherTitle">Deactivate Teacher</h3>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeDeactivateTeacher"
+                    aria-label="Close modal"
+                >
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    Are you sure you want to deactivate
+                    <strong id="deactivateTeacherName">this teacher</strong>?
+                </p>
+
+                <div
+                    id="deactivateTeacherMessage"
+                    class="form-message hidden"
+                    role="alert"
+                ></div>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="cancelDeactivateTeacher"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="confirmDeactivateTeacher"
+                >
+                    Deactivate
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/teachers.js"></script>
+
+</body>
+</html>
