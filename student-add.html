@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student | [Your School Name] ERP</title>
+
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="erp-body" data-page="students">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <img src="assets/images/logo.svg" alt="[Your School Name] Logo">
+            <div>
+                <strong>[Your School Name]</strong>
+                <span>School ERP</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                <span class="icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="nav-item" data-page="students">
+                <span class="icon">ST</span>
+                <span>Students</span>
+            </a>
+
+            <a href="teachers.html" class="nav-item" data-page="teachers">
+                <span class="icon">TR</span>
+                <span>Teachers</span>
+            </a>
+
+            <a href="staff.html" class="nav-item" data-page="staff">
+                <span class="icon">SF</span>
+                <span>Staff</span>
+            </a>
+
+            <a href="attendance.html" class="nav-item" data-page="attendance">
+                <span class="icon">AT</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="fees.html" class="nav-item" data-page="fees">
+                <span class="icon">FE</span>
+                <span>Fees</span>
+            </a>
+
+            <a href="salary.html" class="nav-item" data-page="salary">
+                <span class="icon">SL</span>
+                <span>Salary</span>
+            </a>
+
+            <a href="classes.html" class="nav-item" data-page="classes">
+                <span class="icon">CL</span>
+                <span>Classes & Sections</span>
+            </a>
+
+            <a href="subjects.html" class="nav-item" data-page="subjects">
+                <span class="icon">SB</span>
+                <span>Subjects</span>
+            </a>
+
+            <a href="examinations.html" class="nav-item" data-page="examinations">
+                <span class="icon">EX</span>
+                <span>Examinations</span>
+            </a>
+
+            <a href="reports.html" class="nav-item" data-page="reports">
+                <span class="icon">RP</span>
+                <span>Reports & Analytics</span>
+            </a>
+
+            <a href="settings.html" class="nav-item" data-page="settings">
+                <span class="icon">SE</span>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>ERP System</span>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+
+        <header class="top-header">
+            <div class="header-left">
+                <button type="button" class="icon-button sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+                    ☰
+                </button>
+
+                <div class="page-heading">
+                    <h1>Add Student</h1>
+                    <p>Register a new student</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="header-session">
+                    <span>Academic Session</span>
+                    <strong>[Academic Session]</strong>
+                </div>
+
+                <button type="button" class="profile-button" id="profileButton">
+                    <span class="profile-avatar">AD</span>
+                    <span class="profile-info">
+                        <strong>Administrator</strong>
+                        <small>Admin</small>
+                    </span>
+                </button>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="school-profile.html">My Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <button type="button" id="logoutButton">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="page-content">
+
+            <div class="page-toolbar">
+                <div>
+                    <h2>Student Registration</h2>
+                    <p>Enter the student's complete information below.</p>
+                </div>
+
+                <a href="students.html" class="btn btn-secondary">
+                    Back to Students
+                </a>
+            </div>
+
+            <form id="studentAddForm" class="erp-form">
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <h3>Basic Information</h3>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="admissionNo">Admission No. <span>*</span></label>
+                            <input type="text" id="admissionNo" name="admissionNo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentId">Student ID <span>*</span></label>
+                            <input type="text" id="studentId" name="studentId" required>
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="studentName">Student Name <span>*</span></label>
+                            <input type="text" id="studentName" name="studentName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender <span>*</span></label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth <span>*</span></label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <h3>Academic Information</h3>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="studentClass">Class <span>*</span></label>
+                            <select id="studentClass" name="className" required>
+                                <option value="">Select Class</option>
+                                <option value="Nursery">Nursery</option>
+                                <option value="LKG">LKG</option>
+                                <option value="UKG">UKG</option>
+                                <option value="Class 1">Class 1</option>
+                                <option value="Class 2">Class 2</option>
+                                <option value="Class 3">Class 3</option>
+                                <option value="Class 4">Class 4</option>
+                                <option value="Class 5">Class 5</option>
+                                <option value="Class 6">Class 6</option>
+                                <option value="Class 7">Class 7</option>
+                                <option value="Class 8">Class 8</option>
+                                <option value="Class 9">Class 9</option>
+                                <option value="Class 10">Class 10</option>
+                                <option value="Class 11">Class 11</option>
+                                <option value="Class 12">Class 12</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="section">Section <span>*</span></label>
+                            <select id="section" name="section" required>
+                                <option value="">Select Section</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rollNo">Roll No.</label>
+                            <input type="text" id="rollNo" name="rollNo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admissionDate">Admission Date <span>*</span></label>
+                            <input type="date" id="admissionDate" name="admissionDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentStatus">Status</label>
+                            <select id="studentStatus" name="status">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <h3>Parent / Guardian Information</h3>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="guardianName">Parent / Guardian Name <span>*</span></label>
+                            <input type="text" id="guardianName" name="guardianName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="relationship">Relationship</label>
+                            <select id="relationship" name="relationship">
+                                <option value="">Select Relationship</option>
+                                <option value="Father">Father</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Guardian">Guardian</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span>*</span></label>
+                            <input type="tel" id="phone" name="phone" maxlength="10" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alternatePhone">Alternate Phone</label>
+                            <input type="tel" id="alternatePhone" name="alternatePhone" maxlength="10">
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="form-card">
+                    <div class="form-card-header">
+                        <h3>Additional Information</h3>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group</label>
+                            <select id="bloodGroup" name="bloodGroup">
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="remarks">Remarks</label>
+                            <textarea id="remarks" name="remarks" rows="3"></textarea>
+                        </div>
+
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <a href="students.html" class="btn btn-secondary">Cancel</a>
+                    <button type="reset" class="btn btn-outline">Reset</button>
+                    <button type="submit" class="btn btn-primary" id="saveStudentButton">
+                        Save Student
+                    </button>
+                </div>
+
+                <div id="studentFormMessage" class="form-message hidden"></div>
+
+            </form>
+
+        </main>
+
+        <footer class="erp-footer">
+            <span>&copy; <span class="current-year"></span> [Your School Name]. All Rights Reserved.</span>
+            <span>Designed and Developed by Yadav Web Technologies</span>
+        </footer>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/students.js"></script>
+
+</body>
+</html>
