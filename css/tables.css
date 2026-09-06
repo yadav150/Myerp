@@ -38,3 +38,58 @@
     text-align: center;
     color: var(--muted-text);
 }
+/*-----------------------------------------------------*/
+.table-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.table-action {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background: var(--white);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.table-action:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.table-action.danger:hover {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    padding: 4px 8px;
+    border: 1px solid currentColor;
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-active {
+    color: var(--success-color);
+}
+
+.status-inactive {
+    color: var(--danger-color);
+}
+
+.status-pending {
+    color: var(--warning-color);
+}
