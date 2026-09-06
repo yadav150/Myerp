@@ -1,57 +1,66 @@
-/* ================================
-   COMMON PAGINATION
-================================ */
+/* =========================================
+   PAGINATION
+========================================= */
 
-.pagination-wrapper {
+.pagination-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding-top: 16px;
-    flex-wrap: wrap;
-}
-
-.pagination-info {
-    color: var(--muted-text);
-    font-size: 13px;
-}
-
-.pagination {
-    display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: 5px;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
     flex-wrap: wrap;
 }
 
-.pagination button {
+.pagination-btn {
     min-width: 34px;
     height: 34px;
-    padding: 0 9px;
+    padding: 0 10px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
-    background: var(--white);
+
+    background: var(--surface-color);
     color: var(--text-color);
+
+    font-family: var(--font-family);
+    font-size: 13px;
+
     cursor: pointer;
     transition: var(--transition);
 }
 
-.pagination button:hover:not(:disabled) {
+.pagination-btn:hover:not(:disabled) {
     border-color: var(--primary-color);
     color: var(--primary-color);
+    background: var(--primary-light);
 }
 
-.pagination button.active {
-    background: var(--primary-color);
+.pagination-btn.active {
     border-color: var(--primary-color);
+    background: var(--primary-color);
     color: var(--white);
 }
 
-.pagination button:disabled {
+.pagination-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.pagination-ellipsis {
-    padding: 0 4px;
-    color: var(--muted-text);
+@media (max-width: 600px) {
+
+    .pagination-container {
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .pagination-btn {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 8px;
+    }
 }
