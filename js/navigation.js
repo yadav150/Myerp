@@ -1,60 +1,288 @@
-/* ============================================================
-   js/navigation.js — Navigation state & active link highlighting
-   ============================================================ */
-(function() {
-    'use strict';
+"use strict";
 
-    // Get current page filename
-    const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Highlight active sidebar link
-    document.querySelectorAll('.sidebar-link').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage) {
-            link.closest('.sidebar-item')?.classList.add('active');
-        } else {
-            link.closest('.sidebar-item')?.classList.remove('active');
-        }
+    initializeSidebar();
+    initializeProfileMenu();
+    initializeQuickActionModal();
+    initializeDashboardControls();
+    initializeCurrentYear();
+    initializeActiveNavigation();
+
+});
+
+
+function initializeSidebar() {
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const toggle =
+        document.getElementById("sidebarToggle");
+
+    if (!sidebar || !toggle) {
+        return;
+    }
+
+    toggle.addEventListener("click", () => {
+
+        const isOpen =
+            sidebar.classList.toggle("sidebar-open");
+
+        toggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
     });
 
-    // Update header breadcrumb & title based on page
-    const pageTitleMap = {
-        'dashboard.html': 'Dashboard',
-        'students.html': 'Students',
-        'student-profile.html': 'Student Profile',
-        'teachers.html': 'Teachers',
-        'teacher-profile.html': 'Teacher Profile',
-        'attendance.html': 'Attendance',
-        'fees.html': 'Fees',
-        'salary.html': 'Salary',
-        'id-cards.html': 'ID Cards',
-        'certificates.html': 'Certificates',
-        'notices.html': 'Notices',
-        'reports.html': 'Reports',
-        'settings.html': 'Settings'
-    };
+}
 
-    const title = pageTitleMap[currentPage] || 'Dashboard';
-    const h1 = document.querySelector('.header-title h1');
-    if (h1) h1.textContent = title;
 
-    // Breadcrumb mapping
-    const breadcrumbMap = {
-        'dashboard.html': 'Home / Dashboard',
-        'students.html': 'Academic / Students',
-        'student-profile.html': 'Academic / Students / Profile',
-        'teachers.html': 'Academic / Teachers',
-        'teacher-profile.html': 'Academic / Teachers / Profile',
-        'attendance.html': 'Academic / Attendance',
-        'fees.html': 'Finance / Fees',
-        'salary.html': 'Finance / Salary',
-        'id-cards.html': 'Documents / ID Cards',
-        'certificates.html': 'Documents / Certificates',
-        'notices.html': 'Communication / Notices',
-        'reports.html': 'Administration / Reports',
-        'settings.html': 'Administration / Settings'
-    };
-    const bc = document.querySelector('.header-breadcrumb');
-    if (bc) bc.textContent = breadcrumbMap[currentPage] || 'Home / Dashboard';
+function initializeProfileMenu() {
 
-})();
+    const button =
+        document.getElementById("profileButton");
+
+    const dropdown =
+        document.getElementById("profileDropdown");
+
+    if (!button || !dropdown) {
+        return;
+    }
+
+    button.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        const isHidden =
+            dropdown.hidden;
+
+        dropdown.hidden = !isHidden;
+
+        button.setAttribute(
+            "aria-expanded",
+            String(isHidden)
+        );
+
+    });
+
+    document.addEventListener("click", () => {
+
+        dropdown.hidden = true;
+
+        button.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+    dropdown.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
+
+}
+
+
+function initializeQuickActionModal() {
+
+    const modal =
+        document.getElementById("quickActionModal");
+
+    const open =
+        document.getElementById("quickActionButton");
+
+    const close =
+        document.getElementById("quickActionClose");
+
+    if (!modal || !open || !close) {
+        return;
+    }
+
+    open.addEventListener("click", () => {
+        openNavigationModal(modal);
+    });
+
+    close.addEventListener("click", () => {
+        closeNavigationModal(modal);
+    });
+
+    modal.addEventListener("click", (event) => {
+
+        if (event.target === modal) {
+            closeNavigationModal(modal);
+        }
+
+    });
+
+    document.addEventListener("keydown", (event) => {
+
+        if (
+            event.key === "Escape" &&
+            !modal.hidden
+        ) {
+            closeNavigationModal(modal);
+        }
+
+    });
+
+}
+
+
+function openNavigationModal(modal) {
+
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function closeNavigationModal(modal) {
+
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+}
+
+
+function initializeDashboardControls() {
+
+    const refresh =
+        document.getElementById("refreshDashboard");
+
+    const notification =
+        document.getElementById("notificationButton");
+
+    const viewAll =
+        document.getElementById("viewAllActivities");
+
+    const logout =
+        document.getElementById("logoutButton");
+
+    if (refresh) {
+
+        refresh.addEventListener("click", () => {
+
+            refresh.classList.add("is-loading");
+
+            setTimeout(() => {
+
+                refresh.classList.remove("is-loading");
+
+                if (typeof window.showToast === "function") {
+
+                    window.showToast(
+                        "Dashboard refreshed.",
+                        "info"
+                    );
+
+                }
+
+            }, 500);
+
+        });
+
+    }
+
+    if (notification) {
+
+        notification.addEventListener("click", () => {
+
+            if (typeof window.showToast === "function") {
+
+                window.showToast(
+                    "No new notifications available.",
+                    "info"
+                );
+
+            }
+
+        });
+
+    }
+
+    if (viewAll) {
+
+        viewAll.addEventListener("click", () => {
+
+            if (typeof window.showToast === "function") {
+
+                window.showToast(
+                    "Activity history will be available here.",
+                    "info"
+                );
+
+            }
+
+        });
+
+    }
+
+    if (logout) {
+
+        logout.addEventListener("click", () => {
+
+            const confirmed =
+                window.confirm(
+                    "Are you sure you want to log out?"
+                );
+
+            if (!confirmed) {
+                return;
+            }
+
+            /*
+             * Firebase signOut() will be connected here later.
+             */
+
+            window.location.href = "index.html";
+
+        });
+
+    }
+
+}
+
+
+function initializeCurrentYear() {
+
+    const year =
+        document.getElementById("currentYear");
+
+    if (year) {
+        year.textContent =
+            new Date().getFullYear();
+    }
+
+}
+
+
+function initializeActiveNavigation() {
+
+    const currentPage =
+        document.body.dataset.page;
+
+    if (!currentPage) {
+        return;
+    }
+
+    const links =
+        document.querySelectorAll(
+            ".nav-item[data-page]"
+        );
+
+    links.forEach((link) => {
+
+        link.classList.toggle(
+            "active",
+            link.dataset.page === currentPage
+        );
+
+    });
+
+}
