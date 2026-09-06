@@ -1,226 +1,37 @@
-/* ============================================================
-   css/responsive.css — Additional responsive adjustments
-   ============================================================ */
+@media (max-width: 520px) {
 
-/* ----- Sidebar overlay fix ----- */
-@media (max-width: 1024px) {
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  .sidebar-overlay.active {
-    display: block !important;
-  }
-}
+    .login-page {
+        padding: 15px;
+    }
 
-/* ----- Small screens: stack everything ----- */
-@media (max-width: 600px) {
-  .summary-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-sm);
-  }
-  .summary-card {
-    padding: var(--spacing-sm);
-    flex-direction: column;
-    text-align: center;
-  }
-  .summary-icon {
-    width: 36px;
-    height: 36px;
-  }
-  .summary-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-  .summary-value {
-    font-size: 1rem;
-  }
-  .quick-actions {
-    grid-template-columns: 1fr 1fr;
-  }
-  .dashboard-two-col {
-    gap: var(--spacing-md);
-  }
-  .dash-col-left,
-  .dash-col-right {
-    gap: var(--spacing-md);
-  }
-  .card-header {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
-  .card-body {
-    padding: var(--spacing-sm) var(--spacing-md);
-  }
-  .attendance-stat {
-    grid-template-columns: 50px 28px 1fr;
-    font-size: 0.75rem;
-  }
-  .fee-summary-grid {
-    grid-template-columns: 1fr;
-  }
-  .salary-summary-grid {
-    grid-template-columns: 1fr;
-  }
-  .pagination-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--spacing-sm);
-  }
-  .pagination {
-    justify-content: center;
-  }
-  .page-btn {
-    min-width: 30px;
-    height: 30px;
-    font-size: 0.75rem;
-  }
-  .filter-item {
-    flex: 1 1 auto;
-  }
-  .filter-input,
-  .filter-select {
-    padding: 6px 10px 6px 32px;
-    font-size: 0.8rem;
-  }
-  .filter-icon {
-    left: 8px;
-    width: 15px;
-    height: 15px;
-  }
-}
+    .login-card {
+        padding: 24px 18px;
+    }
 
-/* ----- Tiny screens (320px) ----- */
-@media (max-width: 380px) {
-  .summary-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xs);
-  }
-  .summary-card {
-    padding: var(--spacing-xs);
-  }
-  .summary-value {
-    font-size: 0.9rem;
-  }
-  .summary-label {
-    font-size: 0.6rem;
-  }
-  .quick-actions {
-    grid-template-columns: 1fr;
-  }
-  .btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
-  }
-  .btn svg {
-    width: 14px;
-    height: 14px;
-  }
-  .header-title h1 {
-    font-size: 0.8rem;
-  }
-  .header-breadcrumb {
-    font-size: 0.55rem;
-  }
-  .profile-headline h1 {
-    font-size: 1.1rem;
-  }
-  .id-card {
-    font-size: 0.75rem;
-  }
-  .cert-border {
-    padding: 12px;
-  }
-  .cert-school {
-    font-size: 1rem;
-  }
-  .cert-title {
-    font-size: 0.9rem;
-  }
-  .cert-name {
-    font-size: 1.1rem;
-  }
-  .report-summary-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-  .stat-number {
-    font-size: 1rem;
-  }
-}
+    .login-brand h1 {
+        font-size: 20px;
+    }
 
-/* ----- Tablet landscape ----- */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .summary-cards {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .dashboard-two-col {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+    .login-options {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-/* ----- Large screens ----- */
-@media (min-width: 1440px) {
-  .page-content {
-    padding: var(--spacing-xl);
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .summary-cards {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .dashboard-two-col {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
-}
+    .modal-overlay {
+        padding: 12px;
+    }
 
-/* ----- Print styles (for reports/ID cards/certificates) ----- */
-@media print {
-  .header,
-  .sidebar,
-  .footer,
-  .filter-bar,
-  .page-toolbar,
-  .card-actions,
-  .report-actions,
-  .cert-actions,
-  .id-actions,
-  .profile-actions,
-  .settings-tabs,
-  #saveSettingsBtn,
-  #resetSettingsBtn,
-  .save-feedback {
-    display: none !important;
-  }
-  .main-wrapper {
-    margin-left: 0 !important;
-    padding: 0 !important;
-  }
-  .page-content {
-    padding: 20px !important;
-  }
-  .card {
-    border: none !important;
-    box-shadow: none !important;
-  }
-  .card-body {
-    padding: 10px 0 !important;
-  }
-  .table-wrapper {
-    overflow: visible !important;
-  }
-  .table {
-    font-size: 10px !important;
-    min-width: auto !important;
-  }
-  .table th,
-  .table td {
-    padding: 4px 6px !important;
-  }
-  .certificate,
-  .id-card,
-  .report-preview {
-    border: 1px solid #ccc !important;
-    box-shadow: none !important;
-  }
-  .report-preview {
-    page-break-inside: avoid;
-  }
+    .modal-header,
+    .modal-body {
+        padding: 16px;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .modal-actions .btn {
+        width: 100%;
+    }
 }
